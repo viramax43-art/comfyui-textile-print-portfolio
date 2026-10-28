@@ -1,0 +1,7479 @@
+{
+ "_meta": {
+  "description": "Снимок каталога встроенных нод ComfyUI: имена входов, типы и число выходов. Нужен validate_workflows.py, чтобы проверять workflow JSON без запуска ComfyUI.",
+  "comfyui_version": "0.43.0",
+  "source": "https://github.com/comfyanonymous/ComfyUI",
+  "generated_by": "tools/snapshot_node_catalog.py"
+ },
+ "nodes": {
+  "CLIPTextEncode": {
+   "required": {
+    "text": "STRING",
+    "clip": "CLIP"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningCombine": {
+   "required": {
+    "conditioning_1": "CONDITIONING",
+    "conditioning_2": "CONDITIONING"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningAverage": {
+   "required": {
+    "conditioning_to": "CONDITIONING",
+    "conditioning_from": "CONDITIONING",
+    "conditioning_to_strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningConcat": {
+   "required": {
+    "conditioning_to": "CONDITIONING",
+    "conditioning_from": "CONDITIONING"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningMultiply": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "multiplier": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningSetArea": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "width": "INT",
+    "height": "INT",
+    "x": "INT",
+    "y": "INT",
+    "strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningSetAreaPercentage": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "width": "FLOAT",
+    "height": "FLOAT",
+    "x": "FLOAT",
+    "y": "FLOAT",
+    "strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningSetAreaStrength": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningSetMask": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "mask": "MASK",
+    "strength": "FLOAT",
+    "set_cond_area": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningZeroOut": {
+   "required": {
+    "conditioning": "CONDITIONING"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ConditioningSetTimestepRange": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "start": "FLOAT",
+    "end": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAEDecode": {
+   "required": {
+    "samples": "LATENT",
+    "vae": "VAE"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAEDecodeTiled": {
+   "required": {
+    "samples": "LATENT",
+    "vae": "VAE",
+    "tile_size": "INT",
+    "overlap": "INT",
+    "temporal_size": "INT",
+    "temporal_overlap": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAEEncode": {
+   "required": {
+    "pixels": "IMAGE",
+    "vae": "VAE"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAEEncodeTiled": {
+   "required": {
+    "pixels": "IMAGE",
+    "vae": "VAE",
+    "tile_size": "INT",
+    "overlap": "INT",
+    "temporal_size": "INT",
+    "temporal_overlap": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAEEncodeForInpaint": {
+   "required": {
+    "pixels": "IMAGE",
+    "vae": "VAE",
+    "mask": "MASK",
+    "grow_mask_by": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "InpaintModelConditioning": {
+   "required": {
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "vae": "VAE",
+    "pixels": "IMAGE",
+    "mask": "MASK",
+    "noise_mask": "BOOLEAN"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "nodes.py"
+  },
+  "SaveLatent": {
+   "required": {
+    "samples": "LATENT",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LoadLatent": {
+   "required": {
+    "latent": "?"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "CheckpointLoader": {
+   "required": {
+    "config_name": "COMBO(get_filename_list)",
+    "ckpt_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "nodes.py"
+  },
+  "CheckpointLoaderSimple": {
+   "required": {
+    "ckpt_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "nodes.py"
+  },
+  "DiffusersLoader": {
+   "required": {
+    "model_path": "COMBO(_model_paths)"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "nodes.py"
+  },
+  "unCLIPCheckpointLoader": {
+   "required": {
+    "ckpt_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 4,
+   "file": "nodes.py"
+  },
+  "CLIPSetLastLayer": {
+   "required": {
+    "clip": "CLIP",
+    "stop_at_clip_layer": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LoraLoader": {
+   "required": {
+    "model": "MODEL",
+    "clip": "CLIP",
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT",
+    "strength_clip": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "nodes.py"
+  },
+  "LoraLoaderModelOnly": {
+   "required": {
+    "model": "MODEL",
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "VAELoader": {
+   "required": {
+    "vae_name": "COMBO(vae_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ControlNetLoader": {
+   "required": {
+    "control_net_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "DiffControlNetLoader": {
+   "required": {
+    "model": "MODEL",
+    "control_net_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ControlNetApply": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "control_net": "CONTROL_NET",
+    "image": "IMAGE",
+    "strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ControlNetApplyAdvanced": {
+   "required": {
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "control_net": "CONTROL_NET",
+    "image": "IMAGE",
+    "strength": "FLOAT",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "optional": {
+    "vae": "VAE"
+   },
+   "outputs": 2,
+   "file": "nodes.py"
+  },
+  "UNETLoader": {
+   "required": {
+    "unet_name": "COMBO(get_filename_list)",
+    "weight_dtype": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "CLIPLoader": {
+   "required": {
+    "clip_name": "COMBO(get_filename_list)",
+    "type": "COMBO"
+   },
+   "optional": {
+    "device": "COMBO"
+   },
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "DualCLIPLoader": {
+   "required": {
+    "clip_name1": "COMBO(get_filename_list)",
+    "clip_name2": "COMBO(get_filename_list)",
+    "type": "COMBO"
+   },
+   "optional": {
+    "device": "COMBO"
+   },
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "CLIPVisionLoader": {
+   "required": {
+    "clip_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "CLIPVisionEncode": {
+   "required": {
+    "clip_vision": "CLIP_VISION",
+    "image": "IMAGE",
+    "crop": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "StyleModelLoader": {
+   "required": {
+    "style_model_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "StyleModelApply": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "style_model": "STYLE_MODEL",
+    "clip_vision_output": "CLIP_VISION_OUTPUT",
+    "strength": "FLOAT",
+    "strength_type": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "unCLIPConditioning": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "clip_vision_output": "CLIP_VISION_OUTPUT",
+    "strength": "FLOAT",
+    "noise_augmentation": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "GLIGENLoader": {
+   "required": {
+    "gligen_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "GLIGENTextBoxApply": {
+   "required": {
+    "conditioning_to": "CONDITIONING",
+    "clip": "CLIP",
+    "gligen_textbox_model": "GLIGEN",
+    "text": "STRING",
+    "width": "INT",
+    "height": "INT",
+    "x": "INT",
+    "y": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "EmptyLatentImage": {
+   "required": {
+    "width": "INT",
+    "height": "INT",
+    "batch_size": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentFromBatch": {
+   "required": {
+    "samples": "LATENT",
+    "batch_index": "INT",
+    "length": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "RepeatLatentBatch": {
+   "required": {
+    "samples": "LATENT",
+    "amount": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentUpscale": {
+   "required": {
+    "samples": "LATENT",
+    "upscale_method": "upscale_methods",
+    "width": "INT",
+    "height": "INT",
+    "crop": "crop_methods"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentUpscaleBy": {
+   "required": {
+    "samples": "LATENT",
+    "upscale_method": "upscale_methods",
+    "scale_by": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentRotate": {
+   "required": {
+    "samples": "LATENT",
+    "rotation": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentFlip": {
+   "required": {
+    "samples": "LATENT",
+    "flip_method": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentComposite": {
+   "required": {
+    "samples_to": "LATENT",
+    "samples_from": "LATENT",
+    "x": "INT",
+    "y": "INT",
+    "feather": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentBlend": {
+   "required": {
+    "samples1": "LATENT",
+    "samples2": "LATENT",
+    "blend_factor": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LatentCrop": {
+   "required": {
+    "samples": "LATENT",
+    "width": "INT",
+    "height": "INT",
+    "x": "INT",
+    "y": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "SetLatentNoiseMask": {
+   "required": {
+    "samples": "LATENT",
+    "mask": "MASK"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "KSampler": {
+   "required": {
+    "model": "MODEL",
+    "seed": "INT",
+    "steps": "INT",
+    "cfg": "FLOAT",
+    "sampler_name": "SAMPLERS",
+    "scheduler": "SCHEDULERS",
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "latent_image": "LATENT",
+    "denoise": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "KSamplerAdvanced": {
+   "required": {
+    "model": "MODEL",
+    "add_noise": "COMBO",
+    "noise_seed": "INT",
+    "steps": "INT",
+    "cfg": "FLOAT",
+    "sampler_name": "SAMPLERS",
+    "scheduler": "SCHEDULERS",
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "latent_image": "LATENT",
+    "start_at_step": "INT",
+    "end_at_step": "INT",
+    "return_with_leftover_noise": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "SaveImage": {
+   "required": {
+    "images": "IMAGE",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "PreviewImage": {
+   "required": {
+    "images": "IMAGE"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "nodes.py"
+  },
+  "LoadImage": {
+   "required": {
+    "image": "COMBO(sorted)"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "nodes.py"
+  },
+  "LoadImageMask": {
+   "required": {
+    "channel": "_color_channels"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "LoadImageOutput": {
+   "required": {
+    "image": "COMBO"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "nodes.py"
+  },
+  "ImageScale": {
+   "required": {
+    "image": "IMAGE",
+    "upscale_method": "upscale_methods",
+    "width": "INT",
+    "height": "INT",
+    "crop": "crop_methods"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ImageScaleBy": {
+   "required": {
+    "image": "IMAGE",
+    "upscale_method": "upscale_methods",
+    "scale_by": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ImageInvert": {
+   "required": {
+    "image": "IMAGE"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ImageBatch": {
+   "required": {
+    "image1": "IMAGE",
+    "image2": "IMAGE"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "EmptyImage": {
+   "required": {
+    "width": "INT",
+    "height": "INT",
+    "batch_size": "INT",
+    "color": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "nodes.py"
+  },
+  "ImagePadForOutpaint": {
+   "required": {
+    "image": "IMAGE",
+    "left": "INT",
+    "top": "INT",
+    "right": "INT",
+    "bottom": "INT",
+    "feathering": "INT"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "nodes.py"
+  },
+  "TextEncodeAceStepAudio": {
+   "required": {
+    "clip": "Clip",
+    "tags": "String",
+    "lyrics": "String",
+    "lyrics_strength": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ace.py"
+  },
+  "TextEncodeAceStepAudio1.5": {
+   "required": {
+    "clip": "Clip",
+    "tags": "String",
+    "lyrics": "String",
+    "seed": "Int",
+    "bpm": "Int",
+    "duration": "Float",
+    "timesignature": "Combo",
+    "language": "Combo",
+    "keyscale": "Combo",
+    "generate_audio_codes": "Boolean",
+    "cfg_scale": "Float",
+    "temperature": "Float",
+    "top_p": "Float",
+    "top_k": "Int",
+    "min_p": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ace.py"
+  },
+  "EmptyAceStepLatentAudio": {
+   "required": {
+    "seconds": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ace.py"
+  },
+  "EmptyAceStep1.5LatentAudio": {
+   "required": {
+    "seconds": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ace.py"
+  },
+  "ReferenceTimbreAudio": {
+   "required": {
+    "conditioning": "Conditioning"
+   },
+   "optional": {
+    "latent": "Latent"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ace.py"
+  },
+  "SamplerLCMUpscale": {
+   "required": {
+    "scale_ratio": "Float",
+    "scale_steps": "Int",
+    "upscale_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_advanced_samplers.py"
+  },
+  "SamplerLCM": {
+   "required": {
+    "s_noise": "Float",
+    "s_noise_end": "Float",
+    "noise_clip_std": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_advanced_samplers.py"
+  },
+  "SamplerEulerCFGpp": {
+   "required": {
+    "version": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_advanced_samplers.py"
+  },
+  "AlignYourStepsScheduler": {
+   "required": {
+    "model_type": "Combo",
+    "steps": "Int",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_align_your_steps.py"
+  },
+  "APG": {
+   "required": {
+    "model": "Model",
+    "eta": "Float",
+    "norm_threshold": "Float",
+    "momentum": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_apg.py"
+  },
+  "EmptyARVideoLatent": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ar_video.py"
+  },
+  "SamplerARVideo": {
+   "required": {
+    "num_frame_per_block": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ar_video.py"
+  },
+  "ARVideoI2V": {
+   "required": {
+    "model": "Model",
+    "vae": "Vae",
+    "start_image": "Image",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_ar_video.py"
+  },
+  "UNetSelfAttentionMultiply": {
+   "required": {
+    "model": "Model",
+    "q": "Float",
+    "k": "Float",
+    "v": "Float",
+    "out": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_attention_multiply.py"
+  },
+  "UNetCrossAttentionMultiply": {
+   "required": {
+    "model": "Model",
+    "q": "Float",
+    "k": "Float",
+    "v": "Float",
+    "out": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_attention_multiply.py"
+  },
+  "CLIPAttentionMultiply": {
+   "required": {
+    "clip": "Clip",
+    "q": "Float",
+    "k": "Float",
+    "v": "Float",
+    "out": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_attention_multiply.py"
+  },
+  "UNetTemporalAttentionMultiply": {
+   "required": {
+    "model": "Model",
+    "self_structural": "Float",
+    "self_temporal": "Float",
+    "cross_structural": "Float",
+    "cross_temporal": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_attention_multiply.py"
+  },
+  "EmptyLatentAudio": {
+   "required": {
+    "seconds": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "ConditioningStableAudio": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "seconds_start": "Float",
+    "seconds_total": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "VAEEncodeAudio": {
+   "required": {
+    "audio": "Audio",
+    "vae": "Vae"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "VAEDecodeAudio": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "GetAudioLatentSize": {
+   "required": {
+    "latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "VAEDecodeAudioTiled": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae",
+    "tile_size": "Int",
+    "overlap": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "SaveAudio": {
+   "required": {
+    "audio": "Audio",
+    "filename_prefix": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "SaveAudioMP3": {
+   "required": {
+    "audio": "Audio",
+    "filename_prefix": "String",
+    "quality": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "SaveAudioOpus": {
+   "required": {
+    "audio": "Audio",
+    "filename_prefix": "String",
+    "quality": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "SaveAudioAdvanced": {
+   "required": {
+    "audio": "Audio",
+    "filename_prefix": "String",
+    "format": "DynamicCombo",
+    "quality": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "PreviewAudio": {
+   "required": {
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "LoadAudio": {
+   "required": {
+    "audio": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "RecordAudio": {
+   "required": {
+    "audio": "?"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "TrimAudioDuration": {
+   "required": {
+    "audio": "Audio",
+    "start_index": "Float",
+    "duration": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "SplitAudioChannels": {
+   "required": {
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "JoinAudioChannels": {
+   "required": {
+    "audio_left": "Audio",
+    "audio_right": "Audio"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "AudioConcat": {
+   "required": {
+    "audio1": "Audio",
+    "audio2": "Audio",
+    "direction": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "AudioMerge": {
+   "required": {
+    "audio1": "Audio",
+    "audio2": "Audio",
+    "merge_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "AudioAdjustVolume": {
+   "required": {
+    "audio": "Audio",
+    "volume": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "EmptyAudio": {
+   "required": {
+    "duration": "Float",
+    "sample_rate": "Int",
+    "channels": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "AudioEqualizer3Band": {
+   "required": {
+    "audio": "Audio",
+    "low_gain_dB": "Float",
+    "low_freq": "Int",
+    "mid_gain_dB": "Float",
+    "mid_freq": "Int",
+    "mid_q": "Float",
+    "high_gain_dB": "Float",
+    "high_freq": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio.py"
+  },
+  "AudioEncoderLoader": {
+   "required": {
+    "audio_encoder_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio_encoder.py"
+  },
+  "AudioEncoderEncode": {
+   "required": {
+    "audio_encoder": "AudioEncoder",
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio_encoder.py"
+  },
+  "SheetSage2AudioToABC": {
+   "required": {
+    "audio_encoder": "AudioEncoder",
+    "audio": "Audio",
+    "mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_audio_encoder.py"
+  },
+  "BerniniConditioning": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "reference_image": "Image"
+   },
+   "optional": {
+    "source_video": "Image",
+    "reference_video": "Image",
+    "reference_images": "Autogrow",
+    "ref_max_size": "Int"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_bernini.py"
+  },
+  "LoadBackgroundRemovalModel": {
+   "required": {
+    "bg_removal_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_bg_removal.py"
+  },
+  "RemoveBackground": {
+   "required": {
+    "bg_removal_model": "BackgroundRemoval",
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_bg_removal.py"
+  },
+  "TextEncodeBooguEdit": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "negative_prompt": "String",
+    "vae": "Vae",
+    "images": "Autogrow",
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_boogu.py"
+  },
+  "CreateBoundingBoxes": {
+   "required": {
+    "editor_state": "BoundingBoxes",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "background": "Image",
+    "bboxes": "MultiType",
+    "last_incoming": "BoundingBoxes"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_bounding_boxes.py"
+  },
+  "CreateCameraInfo": {
+   "required": {
+    "mode": "DynamicCombo",
+    "target_x": "Float",
+    "target_y": "Float",
+    "target_z": "Float",
+    "roll": "Float",
+    "fov": "Float",
+    "zoom": "Float",
+    "camera_type": "Combo",
+    "yaw": "Float",
+    "pitch": "Float",
+    "distance": "Float",
+    "position_x": "Float",
+    "position_y": "Float",
+    "position_z": "Float",
+    "quat_x": "Float",
+    "quat_y": "Float",
+    "quat_z": "Float",
+    "quat_w": "Float"
+   },
+   "optional": {
+    "camera_info_state": "CameraInfoState"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_camera.py"
+  },
+  "CameraAngle": {
+   "required": {
+    "horizontal_angle": "Int",
+    "vertical_angle": "Int",
+    "zoom": "Float"
+   },
+   "optional": {
+    "image": "Image",
+    "view": "String"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_camera_angle.py"
+  },
+  "WanCameraEmbedding": {
+   "required": {
+    "camera_pose": "Combo",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int"
+   },
+   "optional": {
+    "speed": "Float",
+    "fx": "Float",
+    "fy": "Float",
+    "cx": "Float",
+    "cy": "Float"
+   },
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_camera_trajectory.py"
+  },
+  "Canny": {
+   "required": {
+    "image": "Image",
+    "low_threshold": "Float",
+    "high_threshold": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_canny.py"
+  },
+  "CFGZeroStar": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cfg.py"
+  },
+  "CFGNorm": {
+   "required": {
+    "model": "Model",
+    "strength": "Float"
+   },
+   "optional": {
+    "pre_cfg": "Boolean"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cfg.py"
+  },
+  "CLIPTextEncodeSDXLRefiner": {
+   "required": {
+    "ascore": "Float",
+    "width": "Int",
+    "height": "Int",
+    "text": "String",
+    "clip": "Clip"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_clip_sdxl.py"
+  },
+  "CLIPTextEncodeSDXL": {
+   "required": {
+    "clip": "Clip",
+    "width": "Int",
+    "height": "Int",
+    "crop_w": "Int",
+    "crop_h": "Int",
+    "target_width": "Int",
+    "target_height": "Int",
+    "text_g": "String",
+    "text_l": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_clip_sdxl.py"
+  },
+  "ColorToRGBInt": {
+   "required": {
+    "color": "Color"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_color.py"
+  },
+  "PorterDuffImageComposite": {
+   "required": {
+    "source": "Image",
+    "source_alpha": "Mask",
+    "destination": "Image",
+    "destination_alpha": "Mask",
+    "mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_compositing.py"
+  },
+  "SplitImageWithAlpha": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_compositing.py"
+  },
+  "JoinImageWithAlpha": {
+   "required": {
+    "image": "Image",
+    "alpha": "Mask"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_compositing.py"
+  },
+  "ImageCompositor": {
+   "required": {
+    "layers": "Layers",
+    "compositor": "Compositor"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_compositor.py"
+  },
+  "AddLayer": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {
+    "layers": "Layers",
+    "mask": "Mask",
+    "name": "String",
+    "x": "Int",
+    "y": "Int",
+    "opacity": "Float",
+    "blend_mode": "Combo",
+    "rotation": "Float",
+    "width": "Int",
+    "height": "Int",
+    "z_index": "Int",
+    "flip_h": "Boolean",
+    "flip_v": "Boolean"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_compositor.py"
+  },
+  "LayersFromBoundingBoxes": {
+   "required": {
+    "image": "Image",
+    "bboxes": "MultiType"
+   },
+   "optional": {
+    "mask": "Mask",
+    "layers": "Layers",
+    "crop_to_content": "Boolean",
+    "canvas_width": "Int",
+    "canvas_height": "Int"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_compositor.py"
+  },
+  "CLIPTextEncodeControlnet": {
+   "required": {
+    "clip": "Clip",
+    "conditioning": "Conditioning",
+    "text": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cond.py"
+  },
+  "T5TokenizerOptions": {
+   "required": {
+    "clip": "Clip",
+    "min_padding": "Int",
+    "min_length": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cond.py"
+  },
+  "ConditioningLoader": {
+   "required": {
+    "conditioning_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cond.py"
+  },
+  "SaveConditioning": {
+   "required": {
+    "conditioning": "Conditioning",
+    "filename_prefix": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cond.py"
+  },
+  "ContextWindowsManual": {
+   "required": {
+    "model": "Model",
+    "context_length": "Int",
+    "context_overlap": "Int",
+    "context_schedule": "Combo",
+    "context_stride": "Int",
+    "closed_loop": "Boolean",
+    "fuse_method": "Combo",
+    "dim": "Int",
+    "freenoise": "Boolean",
+    "cond_retain_index_list": "String",
+    "split_conds_to_windows": "Boolean",
+    "latent_retain_index_list": "String",
+    "causal_window_fix": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_context_windows.py"
+  },
+  "WanContextWindowsManualNode": {
+   "required": {
+    "model": "Model",
+    "context_length": "Int",
+    "context_overlap": "Int",
+    "context_schedule": "Combo",
+    "context_stride": "Int",
+    "closed_loop": "Boolean",
+    "fuse_method": "Combo",
+    "freenoise": "Boolean",
+    "retain_first_frame": "Boolean",
+    "split_conds_to_windows": "Boolean"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_context_windows.py"
+  },
+  "LTXVContextWindowsNode": {
+   "required": {
+    "model": "Model",
+    "context_length": "Int",
+    "context_overlap": "Int",
+    "context_schedule": "Combo",
+    "context_stride": "Int",
+    "closed_loop": "Boolean",
+    "fuse_method": "Combo",
+    "freenoise": "Boolean",
+    "retain_first_frame": "Boolean",
+    "split_conds_to_windows": "Boolean"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_context_windows.py"
+  },
+  "SetUnionControlNetType": {
+   "required": {
+    "control_net": "ControlNet",
+    "type": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_controlnet.py"
+  },
+  "ControlNetInpaintingAliMamaApply": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "control_net": "ControlNet",
+    "vae": "Vae",
+    "image": "Image",
+    "mask": "Mask",
+    "strength": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_controlnet.py"
+  },
+  "EmptyCosmosLatentVideo": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cosmos.py"
+  },
+  "CosmosImageToVideoLatent": {
+   "required": {
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "start_image": "Image",
+    "end_image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cosmos.py"
+  },
+  "CosmosPredict2ImageToVideoLatent": {
+   "required": {
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "start_image": "Image",
+    "end_image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_cosmos.py"
+  },
+  "CurveEditor": {
+   "required": {
+    "curve": "Curve"
+   },
+   "optional": {
+    "histogram": "Histogram"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_curve.py"
+  },
+  "ImageHistogram": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_curve.py"
+  },
+  "BasicScheduler": {
+   "required": {
+    "model": "Model",
+    "scheduler": "Combo",
+    "steps": "Int",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "KarrasScheduler": {
+   "required": {
+    "steps": "Int",
+    "sigma_max": "Float",
+    "sigma_min": "Float",
+    "rho": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "ExponentialScheduler": {
+   "required": {
+    "steps": "Int",
+    "sigma_max": "Float",
+    "sigma_min": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "PolyexponentialScheduler": {
+   "required": {
+    "steps": "Int",
+    "sigma_max": "Float",
+    "sigma_min": "Float",
+    "rho": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "LaplaceScheduler": {
+   "required": {
+    "steps": "Int",
+    "sigma_max": "Float",
+    "sigma_min": "Float",
+    "mu": "Float",
+    "beta": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SDTurboScheduler": {
+   "required": {
+    "model": "Model",
+    "steps": "Int",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "BetaSamplingScheduler": {
+   "required": {
+    "model": "Model",
+    "steps": "Int",
+    "alpha": "Float",
+    "beta": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "VPScheduler": {
+   "required": {
+    "steps": "Int",
+    "beta_d": "Float",
+    "beta_min": "Float",
+    "eps_s": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SplitSigmas": {
+   "required": {
+    "sigmas": "Sigmas",
+    "step": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SplitSigmasDenoise": {
+   "required": {
+    "sigmas": "Sigmas",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "FlipSigmas": {
+   "required": {
+    "sigmas": "Sigmas"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SetFirstSigma": {
+   "required": {
+    "sigmas": "Sigmas",
+    "sigma": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "ExtendIntermediateSigmas": {
+   "required": {
+    "sigmas": "Sigmas",
+    "steps": "Int",
+    "start_at_sigma": "Float",
+    "end_at_sigma": "Float",
+    "spacing": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplingPercentToSigma": {
+   "required": {
+    "model": "Model",
+    "sampling_percent": "Float",
+    "return_actual_sigma": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "KSamplerSelect": {
+   "required": {
+    "sampler_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerDPMPP_3M_SDE": {
+   "required": {
+    "eta": "Float",
+    "s_noise": "Float",
+    "noise_device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerDPMPP_2M_SDE": {
+   "required": {
+    "solver_type": "Combo",
+    "eta": "Float",
+    "s_noise": "Float",
+    "noise_device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerDPMPP_SDE": {
+   "required": {
+    "eta": "Float",
+    "s_noise": "Float",
+    "r": "Float",
+    "noise_device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerDPMPP_2S_Ancestral": {
+   "required": {
+    "eta": "Float",
+    "s_noise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerEulerAncestral": {
+   "required": {
+    "eta": "Float",
+    "s_noise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerEulerAncestralCFGPP": {
+   "required": {
+    "eta": "Float",
+    "s_noise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerLMS": {
+   "required": {
+    "order": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerDPMAdaptative": {
+   "required": {
+    "order": "Int",
+    "rtol": "Float",
+    "atol": "Float",
+    "h_init": "Float",
+    "pcoeff": "Float",
+    "icoeff": "Float",
+    "dcoeff": "Float",
+    "accept_safety": "Float",
+    "eta": "Float",
+    "s_noise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerER_SDE": {
+   "required": {
+    "solver_type": "Combo",
+    "max_stage": "Int",
+    "eta": "Float",
+    "s_noise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerSASolver": {
+   "required": {
+    "model": "Model",
+    "eta": "Float",
+    "sde_start_percent": "Float",
+    "sde_end_percent": "Float",
+    "s_noise": "Float",
+    "predictor_order": "Int",
+    "corrector_order": "Int",
+    "use_pece": "Boolean",
+    "simple_order_2": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerSEEDS2": {
+   "required": {
+    "solver_type": "Combo",
+    "eta": "Float",
+    "s_noise": "Float",
+    "r": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerCustom": {
+   "required": {
+    "model": "Model",
+    "add_noise": "Boolean",
+    "noise_seed": "Int",
+    "cfg": "Float",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "sampler": "Sampler",
+    "sigmas": "Sigmas",
+    "latent_image": "Latent"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "BasicGuider": {
+   "required": {
+    "model": "Model",
+    "conditioning": "Conditioning"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "CFGGuider": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "cfg": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "DualCFGGuider": {
+   "required": {
+    "model": "Model",
+    "cond1": "Conditioning",
+    "cond2": "Conditioning",
+    "negative": "Conditioning",
+    "cfg_conds": "Float",
+    "cfg_cond2_negative": "Float",
+    "style": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "DualModelGuider": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "cfg": "Float"
+   },
+   "optional": {
+    "model_negative": "Model",
+    "negative": "Conditioning"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "RandomNoise": {
+   "required": {
+    "noise_seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "SamplerCustomAdvanced": {
+   "required": {
+    "noise": "Noise",
+    "guider": "Guider",
+    "sampler": "Sampler",
+    "sigmas": "Sigmas",
+    "latent_image": "Latent"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "AddNoise": {
+   "required": {
+    "model": "Model",
+    "noise": "Noise",
+    "sigmas": "Sigmas",
+    "latent_image": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "ManualSigmas": {
+   "required": {
+    "sigmas": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "CFGOverride": {
+   "required": {
+    "model": "Model",
+    "cfg": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_custom_sampler.py"
+  },
+  "LoadImageDataSetFromFolder": {
+   "required": {
+    "folder": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "LoadImageTextDataSetFromFolder": {
+   "required": {
+    "folder": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "LoadVideoDataSetFromFolder": {
+   "required": {
+    "folder": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "LoadVideoTextDataSetFromFolder": {
+   "required": {
+    "folder": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "SaveImageDataSetToFolder": {
+   "required": {
+    "images": "Image",
+    "folder_name": "String",
+    "filename_prefix": "String",
+    "mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "SaveImageTextDataSetToFolder": {
+   "required": {
+    "images": "Image",
+    "folder_name": "String",
+    "filename_prefix": "String",
+    "mode": "Combo"
+   },
+   "optional": {
+    "texts": "String"
+   },
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ImageProcessingNode": {
+   "required": {
+    "images": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "TextProcessingNode": {
+   "required": {
+    "texts": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ResizeImagesByShorterEdgeNode": {
+   "required": {
+    "shorter_edge": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ResizeImagesByLongerEdgeNode": {
+   "required": {
+    "longer_edge": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "CenterCropImagesNode": {
+   "required": {
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "RandomCropImagesNode": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "NormalizeImagesNode": {
+   "required": {
+    "mean": "Float",
+    "std": "Float"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "AdjustBrightnessNode": {
+   "required": {
+    "factor": "Float"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "AdjustContrastNode": {
+   "required": {
+    "factor": "Float"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ShuffleDatasetNode": {
+   "required": {
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ShuffleImageTextDataset": {
+   "required": {
+    "images": "Image",
+    "texts": "String",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "VideoFrameSample": {
+   "required": {
+    "video": "Video",
+    "num_frames": "Int",
+    "strategy": "Combo",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "VideoTemporalCrop": {
+   "required": {
+    "video": "Video",
+    "start_frame": "Int",
+    "length": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "VideoRandomTemporalCrop": {
+   "required": {
+    "video": "Video",
+    "length": "Int",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ShuffleVideoDataset": {
+   "required": {
+    "videos": "Video",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ShuffleVideoTextDataset": {
+   "required": {
+    "videos": "Video",
+    "texts": "String",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "TruncateTextNode": {
+   "required": {
+    "max_length": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "AddTextPrefixNode": {
+   "required": {
+    "prefix": "String"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "AddTextSuffixNode": {
+   "required": {
+    "suffix": "String"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ReplaceTextNode": {
+   "required": {
+    "find": "String",
+    "replace": "String"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ImageDeduplicationNode": {
+   "required": {
+    "similarity_threshold": "Float"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ImageGridNode": {
+   "required": {
+    "columns": "Int",
+    "cell_width": "Int",
+    "cell_height": "Int",
+    "padding": "Int"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "ResolutionBucket": {
+   "required": {
+    "latents": "Latent",
+    "conditioning": "Conditioning"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "MakeTrainingDataset": {
+   "required": {
+    "images": "Image",
+    "vae": "Vae",
+    "clip": "Clip"
+   },
+   "optional": {
+    "texts": "String"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "SaveTrainingDataset": {
+   "required": {
+    "latents": "Latent",
+    "conditioning": "Conditioning",
+    "folder_name": "String",
+    "shard_size": "Int"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "LoadTrainingDataset": {
+   "required": {
+    "folder_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_dataset.py"
+  },
+  "LoadDA3Model": {
+   "required": {
+    "model_name": "Combo",
+    "weight_dtype": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_depth_anything_3.py"
+  },
+  "DA3Inference": {
+   "required": {
+    "da3_model": "?",
+    "image": "Image",
+    "resolution": "Int",
+    "resize_method": "Combo",
+    "mode": "DynamicCombo",
+    "ref_view_strategy": "Combo",
+    "pose_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_depth_anything_3.py"
+  },
+  "DA3Render": {
+   "required": {
+    "normalization": "Combo",
+    "apply_sky_clip": "Boolean",
+    "da3_geometry": "?",
+    "output": "DynamicCombo",
+    "colored": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_depth_anything_3.py"
+  },
+  "DA3GeometryToMesh": {
+   "required": {
+    "da3_geometry": "?",
+    "batch_index": "Int",
+    "decimation": "Int",
+    "discontinuity_threshold": "Float",
+    "confidence_threshold": "Float",
+    "use_sky_mask": "Boolean",
+    "texture": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_depth_anything_3.py"
+  },
+  "DA3GeometryToPointCloud": {
+   "required": {
+    "da3_geometry": "?",
+    "batch_index": "Int",
+    "confidence_threshold": "Float",
+    "use_sky_mask": "Boolean",
+    "downsample": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_depth_anything_3.py"
+  },
+  "DifferentialDiffusion": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {
+    "strength": "Float"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_differential_diffusion.py"
+  },
+  "EasyCache": {
+   "required": {
+    "model": "Model",
+    "reuse_threshold": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float",
+    "verbose": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_easycache.py"
+  },
+  "LazyCache": {
+   "required": {
+    "model": "Model",
+    "reuse_threshold": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float",
+    "verbose": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_easycache.py"
+  },
+  "ReferenceLatent": {
+   "required": {
+    "conditioning": "Conditioning"
+   },
+   "optional": {
+    "latent": "Latent"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_edit_model.py"
+  },
+  "ReferenceMultiLatent": {
+   "required": {
+    "positive": "Conditioning",
+    "resolution": "DynamicCombo",
+    "megapixels": "Float"
+   },
+   "optional": {
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "images": "Autogrow",
+    "image": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_edit_model.py"
+  },
+  "Epsilon Scaling": {
+   "required": {
+    "model": "Model",
+    "scaling_factor": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_eps.py"
+  },
+  "TemporalScoreRescaling": {
+   "required": {
+    "model": "Model",
+    "tsr_k": "Float",
+    "tsr_sigma": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_eps.py"
+  },
+  "TextEncodeFibo2": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "negative_prompt": "String",
+    "images": "Autogrow",
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int",
+    "image": "Image"
+   },
+   "optional": {
+    "vae": "Vae"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_fibo2.py"
+  },
+  "CLIPTextEncodeFlux": {
+   "required": {
+    "clip": "Clip",
+    "clip_l": "String",
+    "t5xxl": "String",
+    "guidance": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "EmptyFlux2LatentImage": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FluxGuidance": {
+   "required": {
+    "conditioning": "Conditioning",
+    "guidance": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FluxDisableGuidance": {
+   "required": {
+    "conditioning": "Conditioning"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FluxKontextImageScale": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FluxKontextMultiReferenceLatentMethod": {
+   "required": {
+    "conditioning": "Conditioning",
+    "reference_latents_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "Flux2Scheduler": {
+   "required": {
+    "steps": "Int",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FluxKVCache": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "Flux3LayoutPrompt": {
+   "required": {
+    "prompt": "String",
+    "element": "Array"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_flux.py"
+  },
+  "FrameInterpolationModelLoader": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_frame_interpolation.py"
+  },
+  "FrameInterpolate": {
+   "required": {
+    "interp_model": "?",
+    "images": "Image",
+    "multiplier": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_frame_interpolation.py"
+  },
+  "FreeU": {
+   "required": {
+    "model": "Model",
+    "b1": "Float",
+    "b2": "Float",
+    "s1": "Float",
+    "s2": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_freelunch.py"
+  },
+  "FreeU_V2": {
+   "required": {
+    "model": "Model",
+    "b1": "Float",
+    "b2": "Float",
+    "s1": "Float",
+    "s2": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_freelunch.py"
+  },
+  "FreSca": {
+   "required": {
+    "model": "Model",
+    "scale_low": "Float",
+    "scale_high": "Float",
+    "freq_cutoff": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_fresca.py"
+  },
+  "SplatToFile3D": {
+   "required": {
+    "splat": "Splat",
+    "format": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "File3DToSplat": {
+   "required": {
+    "model_3d": "File3DAny"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "RenderSplat": {
+   "required": {
+    "splat": "Splat",
+    "width": "Int",
+    "height": "Int",
+    "frames": "Int",
+    "splat_scale": "Float",
+    "sharpen": "Float",
+    "headlight_shading": "Float",
+    "opacity_threshold": "Float",
+    "render_style": "Combo",
+    "background": "Color"
+   },
+   "optional": {
+    "bg_image": "Image",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "TransformSplat": {
+   "required": {
+    "splat": "Splat",
+    "translate_x": "Float",
+    "translate_y": "Float",
+    "translate_z": "Float",
+    "rotate_x": "Float",
+    "rotate_y": "Float",
+    "rotate_z": "Float",
+    "scale_x": "Float",
+    "scale_y": "Float",
+    "scale_z": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "GetSplatCount": {
+   "required": {
+    "splat": "Splat"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "MergeSplat": {
+   "required": {
+    "splat": "Splat",
+    "splats": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "SplatToMesh": {
+   "required": {
+    "splat": "Splat",
+    "resolution": "Int",
+    "kernel": "Int",
+    "smooth": "Int",
+    "level": "Float",
+    "min_component": "Int",
+    "min_opacity": "Float",
+    "color_sharpen": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gaussian_splat.py"
+  },
+  "GITSScheduler": {
+   "required": {
+    "coeff": "Float",
+    "steps": "Int",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_gits.py"
+  },
+  "GLSLShader": {
+   "required": {
+    "image": "Image",
+    "float": "Float",
+    "int": "Int",
+    "bool": "Boolean",
+    "curve": "Curve",
+    "fragment_shader": "String",
+    "size_mode": "DynamicCombo",
+    "images": "Autogrow",
+    "floats": "Autogrow",
+    "ints": "Autogrow",
+    "bools": "Autogrow",
+    "curves": "Autogrow",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_glsl.py"
+  },
+  "QuadrupleCLIPLoader": {
+   "required": {
+    "clip_name1": "Combo",
+    "clip_name2": "Combo",
+    "clip_name3": "Combo",
+    "clip_name4": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hidream.py"
+  },
+  "CLIPTextEncodeHiDream": {
+   "required": {
+    "clip": "Clip",
+    "clip_l": "String",
+    "clip_g": "String",
+    "t5xxl": "String",
+    "llama": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hidream.py"
+  },
+  "HiDreamO1ReferenceImages": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {
+    "images": "Autogrow"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hidream_o1.py"
+  },
+  "PairConditioningSetProperties": {
+   "required": {
+    "positive_NEW": "CONDITIONING",
+    "negative_NEW": "CONDITIONING",
+    "strength": "FLOAT",
+    "set_cond_area": "COMBO"
+   },
+   "optional": {
+    "mask": "MASK",
+    "hooks": "HOOKS",
+    "timesteps": "TIMESTEPS_RANGE"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "PairConditioningSetPropertiesAndCombine": {
+   "required": {
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "positive_NEW": "CONDITIONING",
+    "negative_NEW": "CONDITIONING",
+    "strength": "FLOAT",
+    "set_cond_area": "COMBO"
+   },
+   "optional": {
+    "mask": "MASK",
+    "hooks": "HOOKS",
+    "timesteps": "TIMESTEPS_RANGE"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "ConditioningSetProperties": {
+   "required": {
+    "cond_NEW": "CONDITIONING",
+    "strength": "FLOAT",
+    "set_cond_area": "COMBO"
+   },
+   "optional": {
+    "mask": "MASK",
+    "hooks": "HOOKS",
+    "timesteps": "TIMESTEPS_RANGE"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "ConditioningSetPropertiesAndCombine": {
+   "required": {
+    "cond": "CONDITIONING",
+    "cond_NEW": "CONDITIONING",
+    "strength": "FLOAT",
+    "set_cond_area": "COMBO"
+   },
+   "optional": {
+    "mask": "MASK",
+    "hooks": "HOOKS",
+    "timesteps": "TIMESTEPS_RANGE"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "PairConditioningCombine": {
+   "required": {
+    "positive_A": "CONDITIONING",
+    "negative_A": "CONDITIONING",
+    "positive_B": "CONDITIONING",
+    "negative_B": "CONDITIONING"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "PairConditioningSetDefaultAndCombine": {
+   "required": {
+    "positive": "CONDITIONING",
+    "negative": "CONDITIONING",
+    "positive_DEFAULT": "CONDITIONING",
+    "negative_DEFAULT": "CONDITIONING"
+   },
+   "optional": {
+    "hooks": "HOOKS"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "ConditioningSetDefaultAndCombine": {
+   "required": {
+    "cond": "CONDITIONING",
+    "cond_DEFAULT": "CONDITIONING"
+   },
+   "optional": {
+    "hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "SetClipHooks": {
+   "required": {
+    "clip": "CLIP",
+    "apply_to_conds": "BOOLEAN",
+    "schedule_clip": "BOOLEAN"
+   },
+   "optional": {
+    "hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "ConditioningTimestepsRange": {
+   "required": {
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookLora": {
+   "required": {
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT",
+    "strength_clip": "FLOAT"
+   },
+   "optional": {
+    "prev_hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookLoraModelOnly": {
+   "required": {
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT"
+   },
+   "optional": {
+    "prev_hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookModelAsLora": {
+   "required": {
+    "ckpt_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT",
+    "strength_clip": "FLOAT"
+   },
+   "optional": {
+    "prev_hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookModelAsLoraModelOnly": {
+   "required": {
+    "ckpt_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT"
+   },
+   "optional": {
+    "prev_hooks": "HOOKS"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "SetHookKeyframes": {
+   "required": {
+    "hooks": "HOOKS"
+   },
+   "optional": {
+    "hook_kf": "HOOK_KEYFRAMES"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookKeyframe": {
+   "required": {
+    "strength_mult": "FLOAT",
+    "start_percent": "FLOAT"
+   },
+   "optional": {
+    "prev_hook_kf": "HOOK_KEYFRAMES"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookKeyframesInterpolated": {
+   "required": {
+    "strength_start": "FLOAT",
+    "strength_end": "FLOAT",
+    "interpolation": "_LIST",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT",
+    "keyframes_count": "INT",
+    "print_keyframes": "BOOLEAN"
+   },
+   "optional": {
+    "prev_hook_kf": "HOOK_KEYFRAMES"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CreateHookKeyframesFromFloats": {
+   "required": {
+    "floats_strength": "FLOATS",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT",
+    "print_keyframes": "BOOLEAN"
+   },
+   "optional": {
+    "prev_hook_kf": "HOOK_KEYFRAMES"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "SetModelHooksOnCond": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "hooks": "HOOKS"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hooks.py"
+  },
+  "CLIPTextEncodeHunyuanDiT": {
+   "required": {
+    "clip": "Clip",
+    "bert": "String",
+    "mt5xl": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "EmptyHunyuanLatentVideo": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "HunyuanVideo15ImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "start_image": "Image",
+    "clip_vision_output": "ClipVisionOutput"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "HunyuanVideo15SuperResolution": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "latent": "Latent",
+    "noise_augmentation": "Float"
+   },
+   "optional": {
+    "vae": "Vae",
+    "start_image": "Image",
+    "clip_vision_output": "ClipVisionOutput"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "LatentUpscaleModelLoader": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "HunyuanVideo15LatentUpscaleWithModel": {
+   "required": {
+    "model": "LatentUpscaleModel",
+    "samples": "Latent",
+    "upscale_method": "Combo",
+    "width": "Int",
+    "height": "Int",
+    "crop": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "TextEncodeHunyuanVideo_ImageToVideo": {
+   "required": {
+    "clip": "Clip",
+    "clip_vision_output": "ClipVisionOutput",
+    "prompt": "String",
+    "image_interleave": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "HunyuanImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "guidance_type": "Combo"
+   },
+   "optional": {
+    "start_image": "Image"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "EmptyHunyuanImageLatent": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "HunyuanRefinerLatent": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "latent": "Latent",
+    "noise_augmentation": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_hunyuan.py"
+  },
+  "EmptyLatentHunyuan3Dv2": {
+   "required": {
+    "resolution": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan3d.py"
+  },
+  "Hunyuan3Dv2Conditioning": {
+   "required": {
+    "clip_vision_output": "ClipVisionOutput"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_hunyuan3d.py"
+  },
+  "VAEDecodeHunyuan3D": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae",
+    "num_chunks": "Int",
+    "octree_resolution": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan3d.py"
+  },
+  "VoxelToMeshBasic": {
+   "required": {
+    "voxel": "Voxel",
+    "threshold": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan3d.py"
+  },
+  "VoxelToMesh": {
+   "required": {
+    "voxel": "Voxel",
+    "algorithm": "Combo",
+    "threshold": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hunyuan3d.py"
+  },
+  "HypernetworkLoader": {
+   "required": {
+    "model": "Model",
+    "hypernetwork_name": "Combo",
+    "strength": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hypernetwork.py"
+  },
+  "HyperTile": {
+   "required": {
+    "model": "Model",
+    "tile_size": "Int",
+    "swap_size": "Int",
+    "max_depth": "Int",
+    "scale_depth": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_hypertile.py"
+  },
+  "Ideogram4Scheduler": {
+   "required": {
+    "steps": "Int",
+    "width": "Int",
+    "height": "Int",
+    "mu": "Float",
+    "std": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ideogram4.py"
+  },
+  "ImageCrop": {
+   "required": {
+    "image": "Image",
+    "width": "Int",
+    "height": "Int",
+    "x": "Int",
+    "y": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageCropV2": {
+   "required": {
+    "image": "Image",
+    "crop_region": "BoundingBox"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageCropToMask": {
+   "required": {
+    "images": "Image",
+    "masks": "Mask",
+    "width": "Int",
+    "height": "Int",
+    "pad_factor": "Float",
+    "grow_mask": "Int",
+    "background": "Color"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "PrimitiveBoundingBox": {
+   "required": {
+    "x": "Int",
+    "y": "Int",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "RepeatImageBatch": {
+   "required": {
+    "image": "Image",
+    "amount": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageFromBatch": {
+   "required": {
+    "image": "Image",
+    "batch_index": "Int",
+    "length": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageAddNoise": {
+   "required": {
+    "image": "Image",
+    "seed": "Int",
+    "strength": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "SaveAnimatedWEBP": {
+   "required": {
+    "images": "Image",
+    "filename_prefix": "String",
+    "fps": "Float",
+    "lossless": "Boolean",
+    "quality": "Int",
+    "method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "SaveAnimatedPNG": {
+   "required": {
+    "images": "Image",
+    "filename_prefix": "String",
+    "fps": "Float",
+    "compress_level": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageStitch": {
+   "required": {
+    "image1": "Image",
+    "direction": "Combo",
+    "match_image_size": "Boolean",
+    "spacing_width": "Int",
+    "spacing_color": "Combo"
+   },
+   "optional": {
+    "image2": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ResizeAndPadImage": {
+   "required": {
+    "image": "Image",
+    "target_width": "Int",
+    "target_height": "Int",
+    "padding_color": "Combo",
+    "interpolation": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "PadImageNode": {
+   "required": {
+    "image": "Image",
+    "padding_type": "DynamicCombo",
+    "padding_style": "DynamicCombo",
+    "left": "Int",
+    "top": "Int",
+    "right": "Int",
+    "bottom": "Int",
+    "multiplier": "Float",
+    "multiple": "Int",
+    "color": "Color",
+    "feathering": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "SaveSVGNode": {
+   "required": {
+    "svg": "SVG",
+    "filename_prefix": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "GetImageSize": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "GetLatentSize": {
+   "required": {
+    "latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageRotate": {
+   "required": {
+    "image": "Image",
+    "rotation": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageFlip": {
+   "required": {
+    "image": "Image",
+    "flip_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageScaleToMaxDimension": {
+   "required": {
+    "image": "Image",
+    "upscale_method": "Combo",
+    "largest_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "SplitImageToTileList": {
+   "required": {
+    "image": "Image",
+    "tile_width": "Int",
+    "tile_height": "Int",
+    "overlap": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageMergeTileList": {
+   "required": {
+    "image_list": "Image",
+    "final_width": "Int",
+    "final_height": "Int",
+    "overlap": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageSDRToHDR": {
+   "required": {
+    "image": "Image",
+    "algorithm": "DynamicCombo",
+    "target_luminance": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageColorSpace": {
+   "required": {
+    "image": "Image",
+    "source": "Combo",
+    "destination": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "SaveImageAdvanced": {
+   "required": {
+    "images": "Image",
+    "filename_prefix": "String",
+    "format": "DynamicCombo",
+    "bit_depth": "Combo",
+    "input_color_space": "Combo",
+    "crf": "Int",
+    "save_mode": "DynamicCombo",
+    "fps": "Float",
+    "loop_count": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_images.py"
+  },
+  "ImageCompare": {
+   "required": {
+    "compare_view": "ImageCompare"
+   },
+   "optional": {
+    "image_a": "Image",
+    "image_b": "Image"
+   },
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_image_compare.py"
+  },
+  "InstructPixToPixConditioning": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "pixels": "Image"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_ip2p.py"
+  },
+  "TextEncodeJoyImageEdit": {
+   "required": {
+    "image": "Image",
+    "clip": "Clip",
+    "prompt": "String"
+   },
+   "optional": {
+    "vae": "Vae",
+    "images": "Autogrow"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_joyimage.py"
+  },
+  "BuildJsonPromptIdeogram": {
+   "required": {
+    "color_palette": "Colors",
+    "element": "Array",
+    "high_level_description": "String",
+    "background": "String",
+    "style": "DynamicCombo",
+    "aesthetics": "String",
+    "lighting": "String",
+    "medium": "String",
+    "photo": "String",
+    "art_style": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_json_prompt.py"
+  },
+  "Kandinsky5ImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "start_image": "Image"
+   },
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_kandinsky5.py"
+  },
+  "NormalizeVideoLatentStart": {
+   "required": {
+    "latent": "Latent",
+    "start_frame_count": "Int",
+    "reference_frame_count": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_kandinsky5.py"
+  },
+  "CLIPTextEncodeKandinsky5": {
+   "required": {
+    "clip": "Clip",
+    "clip_l": "String",
+    "qwen25_7b": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_kandinsky5.py"
+  },
+  "LatentAdd": {
+   "required": {
+    "samples1": "Latent",
+    "samples2": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentSubtract": {
+   "required": {
+    "samples1": "Latent",
+    "samples2": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentMultiply": {
+   "required": {
+    "samples": "Latent",
+    "multiplier": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentInterpolate": {
+   "required": {
+    "samples1": "Latent",
+    "samples2": "Latent",
+    "ratio": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentConcat": {
+   "required": {
+    "samples1": "Latent",
+    "samples2": "Latent",
+    "dim": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentCut": {
+   "required": {
+    "samples": "Latent",
+    "dim": "Combo",
+    "index": "Int",
+    "amount": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentCutToBatch": {
+   "required": {
+    "samples": "Latent",
+    "dim": "Combo",
+    "slice_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentBatch": {
+   "required": {
+    "samples1": "Latent",
+    "samples2": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentBatchSeedBehavior": {
+   "required": {
+    "samples": "Latent",
+    "seed_behavior": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentApplyOperation": {
+   "required": {
+    "samples": "Latent",
+    "operation": "LatentOperation"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentApplyOperationCFG": {
+   "required": {
+    "model": "Model",
+    "operation": "LatentOperation"
+   },
+   "optional": {
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentOperationBlend": {
+   "required": {
+    "reference": "Latent",
+    "strength": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentOperationTonemapReinhard": {
+   "required": {
+    "multiplier": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "LatentOperationSharpen": {
+   "required": {
+    "sharpen_radius": "Int",
+    "sigma": "Float",
+    "alpha": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "ReplaceVideoLatentFrames": {
+   "required": {
+    "destination": "Latent",
+    "index": "Int"
+   },
+   "optional": {
+    "source": "Latent"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_latent.py"
+  },
+  "Load3D": {
+   "required": {
+    "model_file": "Combo",
+    "image": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 8,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "Preview3D": {
+   "required": {
+    "model_file": "String"
+   },
+   "optional": {
+    "camera_info": "Load3DCamera",
+    "bg_image": "Image"
+   },
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "Preview3DAdvanced": {
+   "required": {
+    "model_3d": "MultiType",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "PreviewGaussianSplat": {
+   "required": {
+    "model_3d": "MultiType",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "PreviewPointCloud": {
+   "required": {
+    "model_3d": "MultiType",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "Load3DAdvanced": {
+   "required": {
+    "model_file": "Combo",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_load_3d.py"
+  },
+  "ComfyNotNode": {
+   "required": {
+    "value": "AnyType"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ComfyAndNode": {
+   "required": {
+    "value": "AnyType",
+    "values": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ComfyOrNode": {
+   "required": {
+    "value": "AnyType",
+    "values": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "BranchNode": {
+   "required": {
+    "autogrow": "Autogrow",
+    "branch": "String",
+    "branch_names": "Array"
+   },
+   "optional": {
+    "branch": "MatchType"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ComfySwitchNode": {
+   "required": {
+    "switch": "Boolean"
+   },
+   "optional": {
+    "on_false": "MatchType",
+    "on_true": "MatchType"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ComfySoftSwitchNode": {
+   "required": {
+    "switch": "Boolean"
+   },
+   "optional": {
+    "on_false": "MatchType",
+    "on_true": "MatchType"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "CustomCombo": {
+   "required": {
+    "choice": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "DCTestNode": {
+   "required": {
+    "combo": "DynamicCombo",
+    "string": "String",
+    "integer": "Int",
+    "image": "Image",
+    "subcombo": "DynamicCombo",
+    "float_x": "Float",
+    "float_y": "Float"
+   },
+   "optional": {
+    "mask1": "Mask"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "AutogrowNamesTestNode": {
+   "required": {
+    "float": "Float",
+    "autogrow": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "AutogrowPrefixTestNode": {
+   "required": {
+    "float": "Float",
+    "autogrow": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ComboOptionTestNode": {
+   "required": {
+    "combo": "Combo",
+    "combo2": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "ConvertStringToComboNode": {
+   "required": {
+    "string": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "InvertBooleanNode": {
+   "required": {
+    "boolean": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_logic.py"
+  },
+  "StartLoop": {
+   "required": {
+    "mode": "DynamicCombo",
+    "cache_iterations": "Boolean",
+    "num_iterations": "Int",
+    "start_iteration_index": "Int",
+    "max_iteration": "Int",
+    "step": "Int",
+    "list": "MatchType"
+   },
+   "optional": {
+    "parent_iteration": "Int",
+    "initial_iteration_value": "MatchType"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_loop.py"
+  },
+  "LoopIteration": {
+   "required": {
+    "iteration_index": "Int",
+    "is_first": "Boolean",
+    "is_last": "Boolean",
+    "reuse_cache": "Boolean"
+   },
+   "optional": {
+    "list_item": "AnyType",
+    "current_iteration_value": "AnyType"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_loop.py"
+  },
+  "LoopProgress": {
+   "required": {
+    "start_id": "String",
+    "position": "Int",
+    "total": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_loop.py"
+  },
+  "LoopResult": {
+   "required": {
+    "close_id": "String"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_loop.py"
+  },
+  "EndLoop": {
+   "required": {
+    "termination": "AnyType",
+    "accumulate": "Boolean"
+   },
+   "optional": {
+    "output_value": "MatchType",
+    "next_iteration_value": "MatchType",
+    "terminations": "Autogrow"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_loop.py"
+  },
+  "LoraLoaderBypass": {
+   "required": {
+    "model": "MODEL",
+    "clip": "CLIP",
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT",
+    "strength_clip": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_lora_debug.py"
+  },
+  "LoraLoaderBypassModelOnly": {
+   "required": {
+    "model": "MODEL",
+    "lora_name": "COMBO(get_filename_list)",
+    "strength_model": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lora_debug.py"
+  },
+  "LoraSave": {
+   "required": {
+    "filename_prefix": "String",
+    "rank": "Int",
+    "lora_type": "Combo",
+    "bias_diff": "Boolean"
+   },
+   "optional": {
+    "model_diff": "Model",
+    "text_encoder_diff": "Clip"
+   },
+   "outputs": null,
+   "file": "comfy_extras\\nodes_lora_extract.py"
+  },
+  "LoadLoraModel": {
+   "required": {
+    "model": "Model",
+    "loras": "?"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lora_stack.py"
+  },
+  "LoadLoraTextEncoder": {
+   "required": {
+    "clip": "Clip",
+    "loras": "?"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lora_stack.py"
+  },
+  "GetICLoRAParameters": {
+   "required": {
+    "iclora_model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "EmptyLTXVLatentVideo": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVImgToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "image": "Image",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "strength": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVImgToVideoInplace": {
+   "required": {
+    "vae": "Vae",
+    "image": "Image",
+    "latent": "Latent",
+    "strength": "Float",
+    "bypass": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVAddGuide": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "latent": "Latent",
+    "image": "Image",
+    "frame_idx": "Int",
+    "strength": "Float"
+   },
+   "optional": {
+    "attention_mask": "Mask",
+    "iclora_parameters": "?"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVAddLatentGuide": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "latent": "Latent",
+    "guiding_latent": "Latent",
+    "latent_idx": "Int",
+    "strength": "Float"
+   },
+   "optional": {
+    "attention_mask": "Mask"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVCropGuides": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVConditioning": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "frame_rate": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "ModelSamplingLTXV": {
+   "required": {
+    "model": "Model",
+    "max_shift": "Float",
+    "base_shift": "Float"
+   },
+   "optional": {
+    "latent": "Latent"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVScheduler": {
+   "required": {
+    "steps": "Int",
+    "max_shift": "Float",
+    "base_shift": "Float"
+   },
+   "optional": {
+    "latent": "Latent"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVPreprocess": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVConcatAVLatent": {
+   "required": {
+    "video_latent": "Latent",
+    "audio_latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVSeparateAVLatent": {
+   "required": {
+    "av_latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVReferenceAudio": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "reference_audio": "Audio",
+    "identity_guidance_scale": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVSpatioTemporalGuidance": {
+   "required": {
+    "model": "Model",
+    "scale": "Float",
+    "blocks": "String",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVModalityGuidance": {
+   "required": {
+    "model": "Model",
+    "modality_scale": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVDualCFGGuider": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "video_cfg": "Float",
+    "audio_cfg": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVDurationPredictor": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "duration_head": "?",
+    "frame_rate": "Float",
+    "min_seconds": "Float",
+    "max_seconds": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_lt.py"
+  },
+  "LTXVAudioVAELoader": {
+   "required": {
+    "ckpt_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_audio.py"
+  },
+  "LTXVAudioVAEEncode": {
+   "required": {
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_audio.py"
+  },
+  "LTXVAudioVAEDecode": {
+   "required": {
+    "samples": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_audio.py"
+  },
+  "LTXVEmptyLatentAudio": {
+   "required": {
+    "frames_number": "Int",
+    "batch_size": "Int",
+    "frame_rate": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_audio.py"
+  },
+  "LTXAVTextEncoderLoader": {
+   "required": {
+    "text_encoder": "Combo",
+    "ckpt_name": "Combo",
+    "device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_audio.py"
+  },
+  "LTXVAddGeneratedKeyframes": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "latent": "Latent"
+   },
+   "optional": {
+    "interval_frames": "Int",
+    "keyframes": "Latent",
+    "frame_indices": "String"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt_keyframes.py"
+  },
+  "LTXVSeparateGeneratedKeyframes": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "latent": "Latent",
+    "keyframes_to_batch": "Boolean"
+   },
+   "optional": {},
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_lt_keyframes.py"
+  },
+  "LTXVGeneratedKeyframesToGuides": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "latent": "Latent",
+    "keyframes": "Latent",
+    "strength": "Float"
+   },
+   "optional": {
+    "override_frame_indices": "String"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_lt_keyframes.py"
+  },
+  "LTXVFreezeLatent": {
+   "required": {
+    "latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_keyframes.py"
+  },
+  "LTXVLatentUpsampler": {
+   "required": {
+    "samples": "Latent",
+    "upscale_model": "LatentUpscaleModel",
+    "vae": "Vae"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lt_upsampler.py"
+  },
+  "RenormCFG": {
+   "required": {
+    "model": "Model",
+    "cfg_trunc": "Float",
+    "renorm_cfg": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lumina2.py"
+  },
+  "CLIPTextEncodeLumina2": {
+   "required": {
+    "system_prompt": "Combo",
+    "user_prompt": "String",
+    "clip": "Clip"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_lumina2.py"
+  },
+  "TextEncodeMageFlowEdit": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "negative_prompt": "String",
+    "images": "Autogrow",
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int",
+    "image": "Image"
+   },
+   "optional": {
+    "vae": "Vae"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_mage.py"
+  },
+  "Mahiro": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mahiro.py"
+  },
+  "MarigoldV2PostProcess": {
+   "required": {
+    "image": "Image",
+    "prediction": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_marigold.py"
+  },
+  "LatentCompositeMasked": {
+   "required": {
+    "destination": "Latent",
+    "source": "Latent",
+    "x": "Int",
+    "y": "Int",
+    "resize_source": "Boolean"
+   },
+   "optional": {
+    "mask": "Mask"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "ImageCompositeMasked": {
+   "required": {
+    "destination": "Image",
+    "source": "Image",
+    "x": "Int",
+    "y": "Int",
+    "resize_source": "Boolean"
+   },
+   "optional": {
+    "mask": "Mask"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "MaskToImage": {
+   "required": {
+    "mask": "Mask"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "ImageToMask": {
+   "required": {
+    "image": "Image",
+    "channel": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "ImageColorToMask": {
+   "required": {
+    "image": "Image",
+    "color": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "SolidMask": {
+   "required": {
+    "value": "Float",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "InvertMask": {
+   "required": {
+    "mask": "Mask"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "CropMask": {
+   "required": {
+    "mask": "Mask",
+    "x": "Int",
+    "y": "Int",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "MaskComposite": {
+   "required": {
+    "destination": "Mask",
+    "source": "Mask",
+    "x": "Int",
+    "y": "Int",
+    "operation": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "FeatherMask": {
+   "required": {
+    "mask": "Mask",
+    "left": "Int",
+    "top": "Int",
+    "right": "Int",
+    "bottom": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "GrowMask": {
+   "required": {
+    "mask": "Mask",
+    "expand": "Int",
+    "tapered_corners": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "ThresholdMask": {
+   "required": {
+    "mask": "Mask",
+    "value": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "MaskPreview": {
+   "required": {
+    "mask": "Mask"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mask.py"
+  },
+  "ComfyMathExpression": {
+   "required": {
+    "value": "MultiType",
+    "expression": "String",
+    "values": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_math.py"
+  },
+  "LoadMediaPipeFaceLandmarker": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mediapipe.py"
+  },
+  "MediaPipeFaceLandmarker": {
+   "required": {
+    "face_detection_model": "?",
+    "image": "Image",
+    "detector_variant": "Combo",
+    "num_faces": "Int",
+    "min_confidence": "Float",
+    "missing_frame_fallback": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_mediapipe.py"
+  },
+  "MediaPipeFaceMeshVisualize": {
+   "required": {
+    "face_landmarks": "?",
+    "connections": "DynamicCombo",
+    "color": "Color",
+    "thickness": "Int",
+    "point_size": "Int"
+   },
+   "optional": {
+    "image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mediapipe.py"
+  },
+  "MediaPipeFaceMask": {
+   "required": {
+    "face_landmarks": "?",
+    "regions": "DynamicCombo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mediapipe.py"
+  },
+  "PaintMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "voxel_colors": "Voxel"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "BakeTextureFromVoxel": {
+   "required": {
+    "mesh": "Mesh",
+    "voxel_colors": "Voxel",
+    "texture_size": "Int"
+   },
+   "optional": {
+    "reference_mesh": "Mesh"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "MeshTextureToImage": {
+   "required": {
+    "mesh": "Mesh"
+   },
+   "optional": {},
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "ApplyTextureToMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "base_color": "Image"
+   },
+   "optional": {
+    "metallic": "Image",
+    "roughness": "Image",
+    "occlusion": "Image",
+    "normal_map": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "BakeNormalMapFromMesh": {
+   "required": {
+    "low_poly": "Mesh",
+    "high_poly": "Mesh",
+    "resolution": "Int",
+    "cage_distance": "Float",
+    "ignore_backfaces": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "BakeAmbientOcclusion": {
+   "required": {
+    "low_poly": "Mesh",
+    "high_poly": "Mesh",
+    "resolution": "Int",
+    "samples": "Int",
+    "max_distance": "Float",
+    "strength": "Float",
+    "bias": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "RenderMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "mode": "Combo",
+    "width": "Int",
+    "height": "Int",
+    "background": "Color"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "DecimateMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "target_face_count": "Int",
+    "placement_mode": "DynamicCombo",
+    "line_quadric_weight": "Float",
+    "feature_edge_quadric_weight": "Float",
+    "feature_edge_min_dihedral_deg": "Float",
+    "clamp_v_to_edge": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "RemeshMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "resolution": "Int",
+    "sign_mode": "DynamicCombo",
+    "band": "Float",
+    "project_back": "Float",
+    "fix_poles": "Boolean",
+    "smooth_iters": "Int",
+    "drop_small_components": "Float",
+    "precluster_max_verts": "Int",
+    "qef": "Boolean",
+    "drop_inverted_components": "Boolean",
+    "drop_enclosed_components": "Boolean",
+    "manifold": "Boolean",
+    "fill": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "UnwrapMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "segmenter": "Combo",
+    "resolution": "Int",
+    "padding": "Int",
+    "weld_distance": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "RenderUVAtlas": {
+   "required": {
+    "mesh": "Mesh",
+    "resolution": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "FillHoles": {
+   "required": {
+    "mesh": "Mesh",
+    "max_perimeter": "Float",
+    "weld_epsilon_rel": "Float",
+    "max_vertices": "Int",
+    "fill_chains": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "WeldVertices": {
+   "required": {
+    "mesh": "Mesh",
+    "epsilon_rel": "Float",
+    "epsilon_abs": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "MeshSmoothNormals": {
+   "required": {
+    "mesh": "Mesh",
+    "crease_angle": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mesh_postprocess.py"
+  },
+  "TextEncodeMingImageEdit": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "images": "Autogrow",
+    "image": "Image"
+   },
+   "optional": {
+    "vae": "Vae"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_ming.py"
+  },
+  "EmptyMiniMaxH3LatentAV": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxH3ImageToVideo": {
+   "required": {
+    "clip": "Clip",
+    "vae": "Vae",
+    "prompt": "String",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int"
+   },
+   "optional": {
+    "first_frame": "Image",
+    "last_frame": "Image"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxH3AddGuide": {
+   "required": {
+    "positive": "Conditioning",
+    "latent": "Latent",
+    "frame_idx": "Int"
+   },
+   "optional": {
+    "vae": "Vae",
+    "audio_vae": "Vae",
+    "image": "Image",
+    "audio": "Audio"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxH3ReferenceToVideo": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "ref_image_size": "Combo",
+    "ref_image": "Image",
+    "ref_video": "Image",
+    "ref_video_audio": "Audio",
+    "ref_audio": "Audio"
+   },
+   "optional": {
+    "vae": "Vae",
+    "audio_vae": "Vae",
+    "ref_images": "Autogrow",
+    "ref_videos": "Autogrow",
+    "ref_video_audios": "Autogrow",
+    "ref_audios": "Autogrow"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxH3SigmaShift": {
+   "required": {
+    "model": "Model",
+    "shift_video": "Float",
+    "shift_audio": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxH3FunControlNetApply": {
+   "required": {
+    "model": "Model",
+    "model_patch": "ModelPatch",
+    "vae": "Vae",
+    "strength": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {
+    "control_video": "Image",
+    "mask": "Mask",
+    "source_video": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_minimax_h3.py"
+  },
+  "MiniMaxMusic3TextEncode": {
+   "required": {
+    "clip": "Clip",
+    "caption": "String",
+    "lyrics": "String",
+    "seed": "Int",
+    "max_duration": "Float",
+    "cfg_scale": "Float",
+    "top_k": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_minimax_music.py"
+  },
+  "EmptyMiniMaxMusic3LatentAudio": {
+   "required": {
+    "seconds": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_minimax_music.py"
+  },
+  "EmptyMochiLatentVideo": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_mochi.py"
+  },
+  "ModelSamplingDiscrete": {
+   "required": {
+    "model": "MODEL",
+    "sampling": "COMBO",
+    "zsnr": "BOOLEAN"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingStableCascade": {
+   "required": {
+    "model": "MODEL",
+    "shift": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingSD3": {
+   "required": {
+    "model": "MODEL",
+    "shift": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingAuraFlow": {
+   "required": {
+    "model": "MODEL",
+    "shift": "FLOAT"
+   },
+   "optional": {
+    "sampling": "COMBO"
+   },
+   "outputs": null,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingFlux": {
+   "required": {
+    "model": "MODEL",
+    "max_shift": "FLOAT",
+    "base_shift": "FLOAT",
+    "width": "INT",
+    "height": "INT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingContinuousEDM": {
+   "required": {
+    "model": "MODEL",
+    "sampling": "COMBO",
+    "sigma_max": "FLOAT",
+    "sigma_min": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelSamplingContinuousV": {
+   "required": {
+    "model": "MODEL",
+    "sampling": "COMBO",
+    "sigma_max": "FLOAT",
+    "sigma_min": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "RescaleCFG": {
+   "required": {
+    "model": "MODEL",
+    "multiplier": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelNoiseScale": {
+   "required": {
+    "model": "MODEL",
+    "noise_scale": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelComputeDtype": {
+   "required": {
+    "model": "MODEL",
+    "dtype": "COMBO"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "ModelAttentionBackend": {
+   "required": {
+    "model": "Model",
+    "attention": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_advanced.py"
+  },
+  "PatchModelAddDownscale": {
+   "required": {
+    "model": "Model",
+    "block_number": "Int",
+    "downscale_factor": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float",
+    "downscale_after_skip": "Boolean",
+    "downscale_method": "Combo",
+    "upscale_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_downscale.py"
+  },
+  "ModelMergeSimple": {
+   "required": {
+    "model1": "MODEL",
+    "model2": "MODEL",
+    "ratio": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "ModelSubtract": {
+   "required": {
+    "model1": "MODEL",
+    "model2": "MODEL",
+    "multiplier": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "ModelAdd": {
+   "required": {
+    "model1": "MODEL",
+    "model2": "MODEL"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "CLIPMergeSimple": {
+   "required": {
+    "clip1": "CLIP",
+    "clip2": "CLIP",
+    "ratio": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "CLIPSubtract": {
+   "required": {
+    "clip1": "CLIP",
+    "clip2": "CLIP",
+    "multiplier": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "CLIPAdd": {
+   "required": {
+    "clip1": "CLIP",
+    "clip2": "CLIP"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "ModelMergeBlocks": {
+   "required": {
+    "model1": "MODEL",
+    "model2": "MODEL",
+    "input": "FLOAT",
+    "middle": "FLOAT",
+    "out": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "CheckpointSave": {
+   "required": {
+    "model": "MODEL",
+    "clip": "CLIP",
+    "vae": "VAE",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "CLIPSave": {
+   "required": {
+    "clip": "CLIP",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "VAESave": {
+   "required": {
+    "vae": "VAE",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "ModelSave": {
+   "required": {
+    "model": "MODEL",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_model_merging.py"
+  },
+  "ModelPatchLoader": {
+   "required": {
+    "name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "AnimaLLLiteApply": {
+   "required": {
+    "model": "MODEL",
+    "model_patch": "MODEL_PATCH",
+    "image": "IMAGE",
+    "strength": "FLOAT",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "optional": {
+    "mask": "MASK"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "QwenImageDiffsynthControlnet": {
+   "required": {
+    "model": "MODEL",
+    "model_patch": "MODEL_PATCH",
+    "vae": "VAE",
+    "image": "IMAGE",
+    "strength": "FLOAT"
+   },
+   "optional": {
+    "mask": "MASK",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "ZImageFunControlnet": {
+   "required": {
+    "model": "MODEL",
+    "model_patch": "MODEL_PATCH",
+    "vae": "VAE",
+    "strength": "FLOAT"
+   },
+   "optional": {
+    "image": "IMAGE",
+    "inpaint_image": "IMAGE",
+    "mask": "MASK",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "outputs": null,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "WanUni3CControlnetApply": {
+   "required": {
+    "model": "MODEL",
+    "model_patch": "MODEL_PATCH",
+    "vae": "VAE",
+    "render_video": "IMAGE",
+    "strength": "FLOAT",
+    "start_percent": "FLOAT",
+    "end_percent": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "USOStyleReference": {
+   "required": {
+    "model": "MODEL",
+    "model_patch": "MODEL_PATCH",
+    "clip_vision_output": "CLIP_VISION_OUTPUT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "SUPIRApply": {
+   "required": {
+    "model": "Model",
+    "model_patch": "ModelPatch",
+    "vae": "Vae",
+    "image": "Image",
+    "strength_start": "Float",
+    "strength_end": "Float",
+    "restore_cfg": "Float",
+    "restore_cfg_s_tmin": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_model_patch.py"
+  },
+  "LoadMoGeModel": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "MoGePanoramaInference": {
+   "required": {
+    "moge_model": "?",
+    "image": "Image",
+    "resolution_level": "Int",
+    "split_resolution": "Int",
+    "merge_resolution": "Int",
+    "batch_size": "Int",
+    "refine_steps": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "MoGeInference": {
+   "required": {
+    "moge_model": "?",
+    "image": "Image",
+    "resolution_level": "Int",
+    "fov_x_degrees": "Float",
+    "batch_size": "Int",
+    "force_projection": "Boolean",
+    "apply_mask": "Boolean",
+    "refine_steps": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "MoGeRender": {
+   "required": {
+    "moge_geometry": "?",
+    "output": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "MoGePointMapToMesh": {
+   "required": {
+    "moge_geometry": "?",
+    "batch_index": "Int",
+    "decimation": "Int",
+    "discontinuity_threshold": "Float",
+    "texture": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "MoGeGeometryToFOV": {
+   "required": {
+    "moge_geometry": "?",
+    "axis": "Combo",
+    "unit": "Combo"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_moge.py"
+  },
+  "Morphology": {
+   "required": {
+    "image": "Image",
+    "operation": "Combo",
+    "kernel_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_morphology.py"
+  },
+  "ImageRGBToYUV": {
+   "required": {
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_morphology.py"
+  },
+  "ImageYUVToRGB": {
+   "required": {
+    "Y": "Image",
+    "U": "Image",
+    "V": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_morphology.py"
+  },
+  "MOSSImageLayoutPrompt": {
+   "required": {
+    "prompt": "String",
+    "element": "Array",
+    "width": "Int",
+    "height": "Int",
+    "character_boxes": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moss_image.py"
+  },
+  "MOSSImageControl": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "strength": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {
+    "color_map": "Image",
+    "depth_map": "Image"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_moss_image.py"
+  },
+  "TextEncodeMOSSImageEdit": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "edit_format": "Combo",
+    "images": "Autogrow",
+    "image_strength": "Float",
+    "image": "Image"
+   },
+   "optional": {
+    "vae": "Vae"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_moss_image.py"
+  },
+  "MultiGPU_WorkUnits": {
+   "required": {
+    "model": "Model",
+    "max_gpus": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_multigpu.py"
+  },
+  "SelectModelDevice": {
+   "required": {
+    "model": "Model",
+    "device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_multigpu.py"
+  },
+  "SelectCLIPDevice": {
+   "required": {
+    "clip": "Clip",
+    "device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_multigpu.py"
+  },
+  "SelectVAEDevice": {
+   "required": {
+    "vae": "Vae",
+    "device": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_multigpu.py"
+  },
+  "MultiGPU_Options": {
+   "required": {
+    "device_index": "Int",
+    "relative_speed": "Float"
+   },
+   "optional": {
+    "gpu_options": "?"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_multigpu.py"
+  },
+  "NAGuidance": {
+   "required": {
+    "model": "Model",
+    "nag_scale": "Float",
+    "nag_alpha": "Float",
+    "nag_tau": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_nag.py"
+  },
+  "wanBlockSwap": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_nop.py"
+  },
+  "ComfyNumberConvert": {
+   "required": {
+    "value": "MultiType"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_number_convert.py"
+  },
+  "OptimalStepsScheduler": {
+   "required": {
+    "model_type": "Combo",
+    "steps": "Int",
+    "denoise": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_optimalsteps.py"
+  },
+  "PerturbedAttentionGuidance": {
+   "required": {
+    "model": "Model",
+    "scale": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_pag.py"
+  },
+  "Painter": {
+   "required": {
+    "mask": "String",
+    "width": "Int",
+    "height": "Int",
+    "bg_color": "Color"
+   },
+   "optional": {
+    "image": "Image"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_painter.py"
+  },
+  "PerpNeg": {
+   "required": {
+    "model": "Model",
+    "empty_conditioning": "Conditioning",
+    "neg_scale": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_perpneg.py"
+  },
+  "PerpNegGuider": {
+   "required": {
+    "model": "Model",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "empty_conditioning": "Conditioning",
+    "cfg": "Float",
+    "neg_scale": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_perpneg.py"
+  },
+  "PhotoMakerLoader": {
+   "required": {
+    "photomaker_model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_photomaker.py"
+  },
+  "PhotoMakerEncode": {
+   "required": {
+    "photomaker": "Photomaker",
+    "image": "Image",
+    "clip": "Clip",
+    "text": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_photomaker.py"
+  },
+  "PiDConditioning": {
+   "required": {
+    "positive": "Conditioning",
+    "latent": "Latent",
+    "latent_format": "Combo",
+    "degrade_sigma": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_pid.py"
+  },
+  "CLIPTextEncodePixArtAlpha": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "text": "String",
+    "clip": "Clip"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_pixart.py"
+  },
+  "ImageBlend": {
+   "required": {
+    "image1": "Image",
+    "image2": "Image",
+    "blend_factor": "Float",
+    "blend_mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ImageBlur": {
+   "required": {
+    "image": "Image",
+    "blur_radius": "Int",
+    "sigma": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ImageQuantize": {
+   "required": {
+    "image": "Image",
+    "colors": "Int",
+    "dither": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ImageSharpen": {
+   "required": {
+    "image": "Image",
+    "sharpen_radius": "Int",
+    "sigma": "Float",
+    "alpha": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ImageScaleToTotalPixels": {
+   "required": {
+    "image": "Image",
+    "upscale_method": "Combo",
+    "megapixels": "Float",
+    "resolution_steps": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ResizeImageMaskNode": {
+   "required": {
+    "crop": "Combo",
+    "input": "MatchType",
+    "resize_type": "DynamicCombo",
+    "scale_method": "Combo",
+    "width": "Int",
+    "height": "Int",
+    "multiplier": "Float",
+    "longer_size": "Int",
+    "shorter_size": "Int",
+    "megapixels": "Float",
+    "match": "MultiType",
+    "multiple": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "BatchImagesNode": {
+   "required": {
+    "image": "Image",
+    "images": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "BatchMasksNode": {
+   "required": {
+    "mask": "Mask",
+    "masks": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "BatchLatentsNode": {
+   "required": {
+    "latent": "Latent",
+    "latents": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "BatchImagesMasksLatentsNode": {
+   "required": {
+    "input": "MatchType",
+    "inputs": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "ColorTransfer": {
+   "required": {
+    "image_target": "Image",
+    "image_ref": "Image",
+    "method": "Combo",
+    "source_stats": "DynamicCombo",
+    "strength": "Float",
+    "target_index": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_post_processing.py"
+  },
+  "PreviewAny": {
+   "required": {
+    "source": "ANY"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_preview_any.py"
+  },
+  "PrimitiveString": {
+   "required": {
+    "value": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_primitive.py"
+  },
+  "PrimitiveStringMultiline": {
+   "required": {
+    "value": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_primitive.py"
+  },
+  "PrimitiveInt": {
+   "required": {
+    "value": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_primitive.py"
+  },
+  "PrimitiveFloat": {
+   "required": {
+    "value": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_primitive.py"
+  },
+  "PrimitiveBoolean": {
+   "required": {
+    "value": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_primitive.py"
+  },
+  "TextEncodeQwenImageEdit": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String"
+   },
+   "optional": {
+    "vae": "Vae",
+    "image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_qwen.py"
+  },
+  "TextEncodeQwenImageEditPlus": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String"
+   },
+   "optional": {
+    "vae": "Vae",
+    "image1": "Image",
+    "image2": "Image",
+    "image3": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_qwen.py"
+  },
+  "TextEncodeQwenImage21": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "negative_prompt": "String",
+    "resolution": "Int",
+    "images": "Autogrow",
+    "image": "Image"
+   },
+   "optional": {
+    "vae": "Vae"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_qwen.py"
+  },
+  "QwenImage21Cache": {
+   "required": {
+    "model": "Model",
+    "device": "Combo",
+    "dtype": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_qwen.py"
+  },
+  "EmptyQwenImageLayeredLatentImage": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "layers": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_qwen.py"
+  },
+  "RebatchLatents": {
+   "required": {
+    "latents": "Latent",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_rebatch.py"
+  },
+  "RebatchImages": {
+   "required": {
+    "images": "Image",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_rebatch.py"
+  },
+  "ResolutionSelector": {
+   "required": {
+    "aspect_ratio": "Combo",
+    "megapixels": "Float",
+    "preview": "ResolutionPreview"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_resolution.py"
+  },
+  "ScaleROPE": {
+   "required": {
+    "model": "Model",
+    "scale_x": "Float",
+    "shift_x": "Float",
+    "scale_y": "Float",
+    "shift_y": "Float",
+    "scale_t": "Float",
+    "shift_t": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_rope.py"
+  },
+  "RTDETR_detect": {
+   "required": {
+    "model": "Model",
+    "image": "Image",
+    "threshold": "Float",
+    "class_name": "Combo",
+    "max_detections": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_rtdetr.py"
+  },
+  "DrawBBoxes": {
+   "required": {
+    "bboxes": "BoundingBox"
+   },
+   "optional": {
+    "image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_rtdetr.py"
+  },
+  "SelfAttentionGuidance": {
+   "required": {
+    "model": "Model",
+    "scale": "Float",
+    "blur_sigma": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sag.py"
+  },
+  "SAM3_Detect": {
+   "required": {
+    "model": "Model",
+    "image": "Image",
+    "threshold": "Float",
+    "refine_iterations": "Int",
+    "individual_masks": "Boolean"
+   },
+   "optional": {
+    "conditioning": "Conditioning",
+    "bboxes": "BoundingBox",
+    "positive_coords": "String",
+    "negative_coords": "String"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_sam3.py"
+  },
+  "SAM3_VideoTrack": {
+   "required": {
+    "images": "Image",
+    "model": "Model",
+    "detection_threshold": "Float",
+    "max_objects": "Int",
+    "detect_interval": "Int"
+   },
+   "optional": {
+    "initial_mask": "Mask",
+    "conditioning": "Conditioning"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3.py"
+  },
+  "SAM3_TrackPreview": {
+   "required": {
+    "track_data": "?",
+    "opacity": "Float",
+    "fps": "Float"
+   },
+   "optional": {
+    "images": "Image"
+   },
+   "outputs": null,
+   "file": "comfy_extras\\nodes_sam3.py"
+  },
+  "SAM3_TrackToMask": {
+   "required": {
+    "track_data": "?",
+    "object_indices": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3.py"
+  },
+  "SAM3DBody_Loader": {
+   "required": {
+    "model_file": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "SAM3DBody_Predict": {
+   "required": {
+    "sam3d_body_model": "?",
+    "image": "Image",
+    "run_hand_refinement": "Boolean",
+    "fov": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "track_data": "?",
+    "bboxes": "BoundingBox"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "SAM3DBody_FaceExpression": {
+   "required": {
+    "sam3d_body_model": "?",
+    "mhr_pose_data": "?",
+    "image": "Image",
+    "strength": "Float",
+    "mouth_strength": "Float",
+    "eye_strength": "Float",
+    "brow_strength": "Float",
+    "input_threshold": "Float",
+    "blendshape_smooth_window": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "SAM3DBody_Smooth": {
+   "required": {
+    "mhr_pose_data": "?",
+    "strength": "Float",
+    "method": "Combo",
+    "window": "Int",
+    "rotation_threshold_degrees": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "SAM3DBody_Render": {
+   "required": {
+    "pose_data": "MultiType",
+    "width": "Int",
+    "height": "Int",
+    "render_style": "DynamicCombo"
+   },
+   "optional": {
+    "background": "Image",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "BuildPoseFile": {
+   "required": {
+    "pose_data": "MultiType",
+    "format": "DynamicCombo",
+    "fps": "Float",
+    "track_index": "Int",
+    "mesh_style": "DynamicCombo",
+    "bone_smooth_window": "Int",
+    "units": "Combo",
+    "bone_vis": "DynamicCombo",
+    "shader": "DynamicCombo",
+    "marker_radius_m": "Float",
+    "stick_radius_m": "Float",
+    "include_hands": "Boolean",
+    "hand_marker_radius_m": "Float",
+    "hand_stick_radius_m": "Float",
+    "face_style": "Combo",
+    "face_marker_radius_m": "Float",
+    "material_roughness": "Float",
+    "bone_vis_radius_m": "Float",
+    "bone_vis_color": "Combo",
+    "person_palette_falloff": "Float"
+   },
+   "optional": {
+    "sam3d_body_model": "?"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sam3d_body.py"
+  },
+  "SaveGLB": {
+   "required": {
+    "filename_prefix": "String",
+    "mesh": "Mesh"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "MeshToFile3D": {
+   "required": {
+    "mesh": "Mesh"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "RotateMesh": {
+   "required": {
+    "mesh": "Mesh",
+    "mode": "DynamicCombo",
+    "angle_x": "Float",
+    "angle_y": "Float",
+    "angle_z": "Float",
+    "qw": "Float",
+    "qx": "Float",
+    "qy": "Float",
+    "qz": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "MergeMeshes": {
+   "required": {
+    "mesh": "Mesh",
+    "meshes": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "GetMeshInfo": {
+   "required": {
+    "mesh": "Mesh"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "Save3DAdvanced": {
+   "required": {
+    "model_3d": "MultiType",
+    "filename_prefix": "String",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "SaveGaussianSplat": {
+   "required": {
+    "model_3d": "MultiType",
+    "filename_prefix": "String",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "SavePointCloud": {
+   "required": {
+    "model_3d": "MultiType",
+    "filename_prefix": "String",
+    "viewport_state": "Load3D",
+    "width": "Int",
+    "height": "Int"
+   },
+   "optional": {
+    "model_3d_info": "Load3DModelInfo",
+    "camera_info": "Load3DCamera"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_save_3d.py"
+  },
+  "WanSCAILToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "pose_strength": "Float",
+    "pose_start": "Float",
+    "pose_end": "Float",
+    "video_frame_offset": "Int",
+    "previous_frame_count": "Int"
+   },
+   "optional": {
+    "pose_video": "Image",
+    "pose_video_mask": "Image",
+    "replacement_mode": "Boolean",
+    "reference_image": "Image",
+    "reference_image_mask": "Image",
+    "clip_vision_output": "ClipVisionOutput",
+    "previous_frames": "Image"
+   },
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_scail.py"
+  },
+  "SCAIL2ColoredMask": {
+   "required": {
+    "driving_track_data": "?",
+    "object_indices": "String",
+    "sort_by": "Combo",
+    "replacement_mode": "Boolean"
+   },
+   "optional": {
+    "ref_track_data": "MultiType"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_scail.py"
+  },
+  "TripleCLIPLoader": {
+   "required": {
+    "clip_name1": "Combo",
+    "clip_name2": "Combo",
+    "clip_name3": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sd3.py"
+  },
+  "EmptySD3LatentImage": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sd3.py"
+  },
+  "CLIPTextEncodeSD3": {
+   "required": {
+    "clip": "Clip",
+    "clip_l": "String",
+    "clip_g": "String",
+    "t5xxl": "String",
+    "empty_padding": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sd3.py"
+  },
+  "ControlNetApplySD3": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "control_net": "ControlNet",
+    "vae": "Vae",
+    "image": "Image",
+    "strength": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_sd3.py"
+  },
+  "SkipLayerGuidanceSD3": {
+   "required": {
+    "model": "Model",
+    "layers": "String",
+    "scale": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sd3.py"
+  },
+  "SDPoseDrawKeypoints": {
+   "required": {
+    "keypoints": "?",
+    "draw_body": "Boolean",
+    "draw_hands": "Boolean",
+    "draw_face": "Boolean",
+    "draw_feet": "Boolean",
+    "stick_width": "Int",
+    "face_point_size": "Int",
+    "score_threshold": "Float",
+    "draw_head": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sdpose.py"
+  },
+  "SDPoseKeypointExtractor": {
+   "required": {
+    "model": "Model",
+    "vae": "Vae",
+    "image": "Image",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "bboxes": "BoundingBox"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sdpose.py"
+  },
+  "SDPoseFaceBBoxes": {
+   "required": {
+    "keypoints": "?",
+    "scale": "Float",
+    "force_square": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sdpose.py"
+  },
+  "CropByBBoxes": {
+   "required": {
+    "image": "Image",
+    "bboxes": "BoundingBox",
+    "output_width": "Int",
+    "output_height": "Int",
+    "padding": "Int",
+    "keep_aspect": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sdpose.py"
+  },
+  "SD_4XUpscale_Conditioning": {
+   "required": {
+    "images": "Image",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "scale_ratio": "Float",
+    "noise_augmentation": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_sdupscale.py"
+  },
+  "SeedNode": {
+   "required": {
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_seed.py"
+  },
+  "SeedVR2Preprocess": {
+   "required": {
+    "resized_images": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_seedvr.py"
+  },
+  "SeedVR2PostProcessing": {
+   "required": {
+    "images": "Image",
+    "original_resized_images": "Image",
+    "color_correction_method": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_seedvr.py"
+  },
+  "SeedVR2Conditioning": {
+   "required": {
+    "model": "Model",
+    "vae_conditioning": "Latent"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_seedvr.py"
+  },
+  "SeedVR2TemporalChunk": {
+   "required": {
+    "latent": "Latent",
+    "temporal_overlap": "Int",
+    "chunking_mode": "DynamicCombo",
+    "frames_per_chunk": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_seedvr.py"
+  },
+  "SeedVR2TemporalMerge": {
+   "required": {
+    "latents": "Latent",
+    "temporal_overlap": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_seedvr.py"
+  },
+  "SkipLayerGuidanceDiT": {
+   "required": {
+    "model": "Model",
+    "double_layers": "String",
+    "single_layers": "String",
+    "scale": "Float",
+    "start_percent": "Float",
+    "end_percent": "Float",
+    "rescaling_scale": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_slg.py"
+  },
+  "SkipLayerGuidanceDiTSimple": {
+   "required": {
+    "model": "Model",
+    "double_layers": "String",
+    "single_layers": "String",
+    "start_percent": "Float",
+    "end_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_slg.py"
+  },
+  "BlockSparseAttention": {
+   "required": {
+    "model": "Model",
+    "selection": "DynamicCombo",
+    "start_percent": "Float",
+    "end_percent": "Float",
+    "dense_blocks": "String",
+    "min_tokens": "Int",
+    "extra_tokens": "Int",
+    "sink_conditioning": "Combo",
+    "verbose": "Boolean",
+    "tau": "Float",
+    "keep_percent": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_sparse_attention.py"
+  },
+  "StableZero123_Conditioning": {
+   "required": {
+    "clip_vision": "ClipVision",
+    "init_image": "Image",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int",
+    "elevation": "Float",
+    "azimuth": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_stable3d.py"
+  },
+  "StableZero123_Conditioning_Batched": {
+   "required": {
+    "clip_vision": "ClipVision",
+    "init_image": "Image",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "batch_size": "Int",
+    "elevation": "Float",
+    "azimuth": "Float",
+    "elevation_batch_increment": "Float",
+    "azimuth_batch_increment": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_stable3d.py"
+  },
+  "SV3D_Conditioning": {
+   "required": {
+    "clip_vision": "ClipVision",
+    "init_image": "Image",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "video_frames": "Int",
+    "elevation": "Float"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_stable3d.py"
+  },
+  "StableCascade_EmptyLatentImage": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "compression": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_stable_cascade.py"
+  },
+  "StableCascade_StageC_VAEEncode": {
+   "required": {
+    "image": "Image",
+    "vae": "Vae",
+    "compression": "Int"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_stable_cascade.py"
+  },
+  "StableCascade_StageB_Conditioning": {
+   "required": {
+    "conditioning": "Conditioning",
+    "stage_c": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_stable_cascade.py"
+  },
+  "StableCascade_SuperResolutionControlnet": {
+   "required": {
+    "image": "Image",
+    "vae": "Vae"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_stable_cascade.py"
+  },
+  "StringFormat": {
+   "required": {
+    "value": "AnyType",
+    "values": "Autogrow",
+    "f_string": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringConcatenate": {
+   "required": {
+    "string_a": "String",
+    "string_b": "String",
+    "delimiter": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringSubstring": {
+   "required": {
+    "string": "String",
+    "start": "Int",
+    "end": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringLength": {
+   "required": {
+    "string": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "CaseConverter": {
+   "required": {
+    "string": "String",
+    "mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringTrim": {
+   "required": {
+    "string": "String",
+    "mode": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringReplace": {
+   "required": {
+    "string": "String",
+    "find": "String",
+    "replace": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringContains": {
+   "required": {
+    "string": "String",
+    "substring": "String",
+    "case_sensitive": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "StringCompare": {
+   "required": {
+    "string_a": "String",
+    "string_b": "String",
+    "mode": "Combo",
+    "case_sensitive": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "RegexMatch": {
+   "required": {
+    "string": "String",
+    "regex_pattern": "String",
+    "case_insensitive": "Boolean",
+    "multiline": "Boolean",
+    "dotall": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "RegexExtract": {
+   "required": {
+    "string": "String",
+    "regex_pattern": "String",
+    "mode": "Combo",
+    "case_insensitive": "Boolean",
+    "multiline": "Boolean",
+    "dotall": "Boolean",
+    "group_index": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "RegexReplace": {
+   "required": {
+    "string": "String",
+    "regex_pattern": "String",
+    "replace": "String"
+   },
+   "optional": {
+    "case_insensitive": "Boolean",
+    "multiline": "Boolean",
+    "dotall": "Boolean",
+    "count": "Int"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "JsonExtractString": {
+   "required": {
+    "json_string": "String",
+    "key": "String"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "ConvertDictionaryToString": {
+   "required": {
+    "dictionary": "Dict",
+    "indent": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "ConvertArrayToString": {
+   "required": {
+    "array": "Array",
+    "indent": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_string.py"
+  },
+  "TCFG": {
+   "required": {
+    "model": "Model"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_tcfg.py"
+  },
+  "SaveText": {
+   "required": {
+    "text": "String",
+    "filename_prefix": "String",
+    "format": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_text.py"
+  },
+  "TextGenerate": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "max_length": "Int",
+    "sampling_mode": "DynamicCombo",
+    "temperature": "Float",
+    "top_k": "Int",
+    "top_p": "Float",
+    "min_p": "Float",
+    "repetition_penalty": "Float",
+    "seed": "Int"
+   },
+   "optional": {
+    "image": "Image",
+    "video": "Image",
+    "audio": "Audio",
+    "thinking": "Boolean",
+    "use_default_template": "Boolean",
+    "mtp": "Combo",
+    "system_prompt": "String",
+    "presence_penalty": "Float"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_textgen.py"
+  },
+  "TextOverlay": {
+   "required": {
+    "images": "Image",
+    "text": "String",
+    "font_size": "Float",
+    "color": "Color",
+    "position": "Combo",
+    "align": "Combo",
+    "outline": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_text_overlay.py"
+  },
+  "TomePatchModel": {
+   "required": {
+    "model": "Model",
+    "ratio": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_tomesd.py"
+  },
+  "CreateList": {
+   "required": {
+    "input": "AnyType",
+    "inputs": "Autogrow"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_toolkit.py"
+  },
+  "GetItemFromList": {
+   "required": {
+    "list": "AnyType",
+    "index": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_toolkit.py"
+  },
+  "TorchCompileModel": {
+   "required": {
+    "model": "Model",
+    "backend": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_torch_compile.py"
+  },
+  "TrainLoraNode": {
+   "required": {
+    "model": "Model",
+    "latents": "Latent",
+    "positive": "Conditioning",
+    "batch_size": "Int",
+    "grad_accumulation_steps": "Int",
+    "steps": "Int",
+    "learning_rate": "Float",
+    "rank": "Int",
+    "optimizer": "Combo",
+    "loss_function": "Combo",
+    "seed": "Int",
+    "training_dtype": "Combo",
+    "lora_dtype": "Combo",
+    "quantized_backward": "Boolean",
+    "algorithm": "Combo",
+    "gradient_checkpointing": "Boolean",
+    "checkpoint_depth": "Int",
+    "offloading": "Boolean",
+    "existing_lora": "Combo",
+    "bucket_mode": "Boolean",
+    "bypass_mode": "Boolean"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_train.py"
+  },
+  "LoraModelLoader": {
+   "required": {
+    "model": "Model",
+    "lora": "?",
+    "strength_model": "Float",
+    "bypass": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_train.py"
+  },
+  "SaveLoRA": {
+   "required": {
+    "lora": "?",
+    "prefix": "String"
+   },
+   "optional": {
+    "steps": "Int"
+   },
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_train.py"
+  },
+  "LossGraphNode": {
+   "required": {
+    "loss": "?",
+    "filename_prefix": "String"
+   },
+   "optional": {},
+   "outputs": 0,
+   "file": "comfy_extras\\nodes_train.py"
+  },
+  "VaeDecodeShapeTrellis": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "VaeDecodeTextureTrellis": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae",
+    "shape_subdivides": "?"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "VaeDecodeStructureTrellis2": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae",
+    "resolution": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Trellis2UpsampleStage": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "shape_latent": "Latent",
+    "vae": "Vae",
+    "target_resolution": "Int"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Trellis2Conditioning": {
+   "required": {
+    "clip_vision_model": "ClipVision",
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Trellis2ShapeStage": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "voxel": "Voxel"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Trellis2TextureStage": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "shape_latent": "Latent"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "EmptyTrellis2LatentStructure": {
+   "required": {
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Pixal3DConditioning": {
+   "required": {
+    "clip_vision_model": "ClipVision",
+    "image": "Image",
+    "camera_angle_x": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "Pixal3DMultiViewConditioning": {
+   "required": {
+    "clip_vision_model": "ClipVision",
+    "fov": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_trellis2.py"
+  },
+  "TripoSplatPreprocessImage": {
+   "required": {
+    "image": "Image",
+    "mask": "Mask",
+    "erode_radius": "Int",
+    "size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_triposplat.py"
+  },
+  "TripoSplatConditioning": {
+   "required": {
+    "clip_vision": "ClipVision",
+    "vae": "Vae",
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_triposplat.py"
+  },
+  "VAEDecodeTripoSplat": {
+   "required": {
+    "samples": "Latent",
+    "vae": "Vae",
+    "num_gaussians": "Int",
+    "seed": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_triposplat.py"
+  },
+  "TripoSplatSamplingPreview": {
+   "required": {
+    "model": "Model",
+    "vae": "Vae",
+    "octree_level": "Int",
+    "num_gaussians": "Int",
+    "yaw": "Float",
+    "pitch": "Float",
+    "point_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_triposplat.py"
+  },
+  "UpscaleModelLoader": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_upscale_model.py"
+  },
+  "ImageUpscaleWithModel": {
+   "required": {
+    "upscale_model": "UpscaleModel",
+    "image": "Image"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_upscale_model.py"
+  },
+  "SaveWEBM": {
+   "required": {
+    "images": "Image",
+    "filename_prefix": "String",
+    "codec": "Combo",
+    "fps": "Float",
+    "crf": "Float"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "SaveVideo": {
+   "required": {
+    "video": "Video",
+    "filename_prefix": "String",
+    "format": "DynamicCombo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "CreateVideo": {
+   "required": {
+    "images": "Image",
+    "fps": "Float"
+   },
+   "optional": {
+    "audio": "Audio",
+    "bit_depth": "Combo",
+    "color_space": "Combo",
+    "codec": "Combo"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "ConcatenateVideo": {
+   "required": {
+    "videos": "Autogrow",
+    "codec": "Combo",
+    "video": "Video"
+   },
+   "optional": {
+    "complete_audio": "Audio"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "GetVideoComponents": {
+   "required": {
+    "video": "Video"
+   },
+   "optional": {},
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "LoadVideo": {
+   "required": {
+    "file": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "Video Slice": {
+   "required": {
+    "video": "Video",
+    "start_time": "Float",
+    "duration": "Float",
+    "strict_duration": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "VideoTrim": {
+   "required": {
+    "video": "Video",
+    "trim": "VideoEdit",
+    "strict_duration": "Boolean"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "VideoCrop": {
+   "required": {
+    "video": "Video",
+    "crop": "VideoEdit"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video.py"
+  },
+  "ImageOnlyCheckpointLoader": {
+   "required": {
+    "ckpt_name": "COMBO(get_filename_list)"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "SVD_img2vid_Conditioning": {
+   "required": {
+    "clip_vision": "CLIP_VISION",
+    "init_image": "IMAGE",
+    "vae": "VAE",
+    "width": "INT",
+    "height": "INT",
+    "video_frames": "INT",
+    "motion_bucket_id": "INT",
+    "fps": "INT",
+    "augmentation_level": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "VideoLinearCFGGuidance": {
+   "required": {
+    "model": "MODEL",
+    "min_cfg": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "VideoTriangleCFGGuidance": {
+   "required": {
+    "model": "MODEL",
+    "min_cfg": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "ImageOnlyCheckpointSave": {
+   "required": {
+    "model": "MODEL",
+    "clip_vision": "CLIP_VISION",
+    "vae": "VAE",
+    "filename_prefix": "STRING"
+   },
+   "optional": {},
+   "outputs": null,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "ConditioningSetAreaPercentageVideo": {
+   "required": {
+    "conditioning": "CONDITIONING",
+    "width": "FLOAT",
+    "height": "FLOAT",
+    "temporal": "FLOAT",
+    "x": "FLOAT",
+    "y": "FLOAT",
+    "z": "FLOAT",
+    "strength": "FLOAT"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_video_model.py"
+  },
+  "OpticalFlowLoader": {
+   "required": {
+    "model_name": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_void.py"
+  },
+  "VOIDQuadmaskPreprocess": {
+   "required": {
+    "mask": "Mask",
+    "dilate_width": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_void.py"
+  },
+  "VOIDInpaintConditioning": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "video": "Image",
+    "quadmask": "Mask",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_void.py"
+  },
+  "VOIDWarpedNoise": {
+   "required": {
+    "optical_flow": "?",
+    "video": "Image",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_void.py"
+  },
+  "VOIDWarpedNoiseSource": {
+   "required": {
+    "warped_noise": "Latent"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_void.py"
+  },
+  "WanImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "start_image": "Image",
+    "ref_pad_image": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanFunControlToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "start_image": "Image",
+    "control_video": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "Wan22FunControlToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "ref_image": "Image",
+    "control_video": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanFirstLastFrameToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "clip_vision_start_image": "ClipVisionOutput",
+    "clip_vision_end_image": "ClipVisionOutput",
+    "start_image": "Image",
+    "end_image": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanFunInpaintToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "start_image": "Image",
+    "end_image": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanVaceToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "strength": "Float"
+   },
+   "optional": {
+    "control_video": "Image",
+    "control_masks": "Mask",
+    "reference_image": "Image"
+   },
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "TrimVideoLatent": {
+   "required": {
+    "samples": "Latent",
+    "trim_amount": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanCameraImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "start_image": "Image",
+    "camera_conditions": "WanCameraEmbedding"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanPhantomSubjectToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "images": "Image"
+   },
+   "outputs": 4,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanTrackToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "tracks": "String",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "temperature": "Float",
+    "topk": "Int",
+    "start_image": "Image"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanSoundImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "audio_encoder_output": "AudioEncoderOutput",
+    "ref_image": "Image",
+    "control_video": "Image",
+    "ref_motion": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanSoundImageToVideoExtend": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "length": "Int",
+    "video_latent": "Latent"
+   },
+   "optional": {
+    "audio_encoder_output": "AudioEncoderOutput",
+    "ref_image": "Image",
+    "control_video": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanHuMoImageToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "audio_encoder_output": "AudioEncoderOutput",
+    "ref_image": "Image"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanAnimateToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "continue_motion_max_frames": "Int",
+    "video_frame_offset": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "reference_image": "Image",
+    "face_video": "Image",
+    "pose_video": "Image",
+    "background_video": "Image",
+    "character_mask": "Mask",
+    "continue_motion": "Image"
+   },
+   "outputs": 6,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanAnimate2ToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "video_frame_offset": "Int",
+    "pose_strength": "Float",
+    "pose_start_percent": "Float",
+    "pose_end_percent": "Float",
+    "reference_image_strength": "Float"
+   },
+   "optional": {
+    "reference_image": "Image",
+    "pose_video": "Image",
+    "clip_vision_output": "ClipVisionOutput",
+    "positive_pose": "Conditioning",
+    "clip_vision_output_pose": "ClipVisionOutput",
+    "continue_motion": "Image"
+   },
+   "outputs": 6,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanAnimate2Cache": {
+   "required": {
+    "model": "Model",
+    "device": "Combo",
+    "dtype": "Combo"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "Wan22ImageToVideoLatent": {
+   "required": {
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int"
+   },
+   "optional": {
+    "start_image": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanInfiniteTalkToVideo": {
+   "required": {
+    "mode": "DynamicCombo",
+    "model": "Model",
+    "model_patch": "ModelPatch",
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "audio_encoder_output_1": "AudioEncoderOutput",
+    "motion_frame_count": "Int",
+    "audio_scale": "Float"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "start_image": "Image",
+    "previous_frames": "Image",
+    "audio_encoder_output_2": "AudioEncoderOutput",
+    "mask_1": "Mask",
+    "mask_2": "Mask"
+   },
+   "outputs": 5,
+   "file": "comfy_extras\\nodes_wan.py"
+  },
+  "WanDancerEncodeAudio": {
+   "required": {
+    "audio": "Audio",
+    "video_frames": "Int",
+    "audio_inject_scale": "Float"
+   },
+   "optional": {},
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_wandancer.py"
+  },
+  "WanDancerVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int"
+   },
+   "optional": {
+    "clip_vision_output": "ClipVisionOutput",
+    "clip_vision_output_ref": "ClipVisionOutput",
+    "start_image": "Image",
+    "mask": "Mask",
+    "audio_encoder_output": "AudioEncoderOutput"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wandancer.py"
+  },
+  "WanDancerPadKeyframes": {
+   "required": {
+    "images": "Image",
+    "segment_length": "Int",
+    "segment_index": "Int",
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wandancer.py"
+  },
+  "WanDancerPadKeyframesList": {
+   "required": {
+    "images": "Image",
+    "segment_length": "Int",
+    "num_segments": "Int",
+    "audio": "Audio"
+   },
+   "optional": {},
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wandancer.py"
+  },
+  "WanMoveVisualizeTracks": {
+   "required": {
+    "images": "Image",
+    "line_resolution": "Int",
+    "circle_size": "Int",
+    "opacity": "Float",
+    "line_width": "Int"
+   },
+   "optional": {
+    "tracks": "Tracks"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_wanmove.py"
+  },
+  "GenerateTracks": {
+   "required": {
+    "width": "Int",
+    "height": "Int",
+    "start_x": "Float",
+    "start_y": "Float",
+    "end_x": "Float",
+    "end_y": "Float",
+    "num_frames": "Int",
+    "num_tracks": "Int",
+    "track_spread": "Float",
+    "bezier": "Boolean",
+    "mid_x": "Float",
+    "mid_y": "Float",
+    "interpolation": "Combo"
+   },
+   "optional": {
+    "track_mask": "Mask"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_wanmove.py"
+  },
+  "WanMoveConcatTrack": {
+   "required": {
+    "tracks_1": "Tracks"
+   },
+   "optional": {
+    "tracks_2": "Tracks"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_wanmove.py"
+  },
+  "WanMoveTrackToVideo": {
+   "required": {
+    "positive": "Conditioning",
+    "negative": "Conditioning",
+    "vae": "Vae",
+    "strength": "Float",
+    "width": "Int",
+    "height": "Int",
+    "length": "Int",
+    "batch_size": "Int",
+    "start_image": "Image"
+   },
+   "optional": {
+    "tracks": "Tracks",
+    "clip_vision_output": "ClipVisionOutput"
+   },
+   "outputs": 3,
+   "file": "comfy_extras\\nodes_wanmove.py"
+  },
+  "WebcamCapture": {
+   "required": {
+    "image": "WEBCAM",
+    "width": "INT",
+    "height": "INT",
+    "capture_on_queue": "BOOLEAN"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_webcam.py"
+  },
+  "YuE2GenerateABC": {
+   "required": {
+    "clip": "Clip",
+    "style": "String",
+    "lyrics": "String",
+    "seed": "Int",
+    "mode": "Combo",
+    "max_abc_tokens": "Int",
+    "temperature": "Float",
+    "top_p": "Float",
+    "top_k": "Int",
+    "repetition_penalty": "Float",
+    "penalty_window": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_yue2.py"
+  },
+  "YuE2GenerateMusic": {
+   "required": {
+    "clip": "Clip",
+    "style": "String",
+    "lyrics": "String",
+    "abc": "String",
+    "seed": "Int",
+    "mode": "Combo",
+    "max_duration": "Float",
+    "temperature": "Float",
+    "top_p": "Float",
+    "top_k": "Int",
+    "repetition_penalty": "Float"
+   },
+   "optional": {
+    "cfg_scale": "Float"
+   },
+   "outputs": 2,
+   "file": "comfy_extras\\nodes_yue2.py"
+  },
+  "EmptyYuE2LatentAudio": {
+   "required": {
+    "seconds": "Float",
+    "batch_size": "Int"
+   },
+   "optional": {},
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_yue2.py"
+  },
+  "TextEncodeZImageOmni": {
+   "required": {
+    "clip": "Clip",
+    "prompt": "String",
+    "auto_resize_images": "Boolean"
+   },
+   "optional": {
+    "image_encoder": "ClipVision",
+    "vae": "Vae",
+    "image1": "Image",
+    "image2": "Image",
+    "image3": "Image"
+   },
+   "outputs": 1,
+   "file": "comfy_extras\\nodes_zimage.py"
+  }
+ }
+}

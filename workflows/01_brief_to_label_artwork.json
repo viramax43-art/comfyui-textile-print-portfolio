@@ -1,0 +1,211 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "_meta": {
+      "title": "CHECKPOINT: SDXL base (подставить свою модель)"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "flat vector label artwork for a craft beverage bottle, botanical moss and juniper ornament, muted forest green with warm ochre accent, hand drawn line art, symmetric centred composition, ornamental frame, screen print look, limited to 3 spot colours, solid clean background, crisp high contrast edges, packaging illustration, print ready artwork"
+    },
+    "_meta": {
+      "title": "POSITIVE: бриф -> промпт (графика без текста)"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, folded paper, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
+    },
+    "_meta": {
+      "title": "NEGATIVE: запрет текста, теней и перспективы"
+    }
+  },
+  "4": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1664,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "Холст 1024x1664: пропорции 70x120 мм + вылет 3 мм"
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 734021,
+      "steps": 30,
+      "cfg": 6.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "ПРОХОД 1: генерация по брифу"
+    }
+  },
+  "6": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "DECODE"
+    }
+  },
+  "7": {
+    "class_type": "ImageScaleBy",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "scale_by": 1.5
+    },
+    "_meta": {
+      "title": "HI-RES: x1.5 перед вторым проходом"
+    }
+  },
+  "8": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "7",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "ENCODE латента для второго прохода"
+    }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "8",
+        0
+      ],
+      "seed": 734022,
+      "steps": 20,
+      "cfg": 5.0,
+      "sampler_name": "dpmpp_2m_sde",
+      "scheduler": "karras",
+      "denoise": 0.42
+    },
+    "_meta": {
+      "title": "ПРОХОД 2: hi-res fix, denoise 0.42 (детализация без смены композиции)"
+    }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "9",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "DECODE"
+    }
+  },
+  "11": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "10",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 898,
+      "height": 1488,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "ФИЗИЧЕСКИЙ РАЗМЕР: 898x1488 px = 76x126 мм @300 dpi"
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "labels/LB-2026-014/print_art_v1"
+    },
+    "_meta": {
+      "title": "OUTPUT: PNG под раскладку на вырубку"
+    }
+  },
+  "13": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью для согласования"
+    }
+  }
+}

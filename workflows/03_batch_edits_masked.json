@@ -1,0 +1,317 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0_inpainting_0.1.safetensors"
+    },
+    "_meta": {
+      "title": "CHECKPOINT: SDXL inpaint (подставить свой inpaint-чекпойнт)"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "replace masked area: small juniper sprig ornament, flat vector line art, forest green ink, same line weight and style as the rest of the label, solid background, no text"
+    },
+    "_meta": {
+      "title": "ПРАВКА 1 (маска A): добавить ветку можжевельника"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "text, letters, typography, drop shadow, cast shadow, perspective, 3d render, blurry, visible seam, colour shift, halo, different art style"
+    },
+    "_meta": {
+      "title": "NEGATIVE общий для обеих правок"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "replace masked area: solid warm ochre background with subtle hand drawn hatch texture, flat colour, screen print, even coverage, no gradient, no shadow, no text"
+    },
+    "_meta": {
+      "title": "ПРАВКА 2 (маска B): перекрасить фон в охра с штриховкой"
+    }
+  },
+  "10": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "labels/LB-2026-014/print_art_v1.png"
+    },
+    "_meta": {
+      "title": "BASELINE: текущий арт (выход кейса 01)"
+    }
+  },
+  "20": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "masks/LB-2026-014/edit_01_ornament.png"
+    },
+    "_meta": {
+      "title": "МАСКА A: зона правки 1 (чёрное = менять), выход MASK = slot 1"
+    }
+  },
+  "21": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "masks/LB-2026-014/edit_02_background.png"
+    },
+    "_meta": {
+      "title": "МАСКА B: зона правки 2"
+    }
+  },
+  "30": {
+    "class_type": "GrowMask",
+    "inputs": {
+      "mask": [
+        "20",
+        1
+      ],
+      "expand": 12,
+      "tapered_corners": true
+    },
+    "_meta": {
+      "title": "Расширение маски A на 12 px: мягкая стыковка без шва"
+    }
+  },
+  "31": {
+    "class_type": "InpaintModelConditioning",
+    "inputs": {
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ],
+      "pixels": [
+        "10",
+        0
+      ],
+      "mask": [
+        "30",
+        0
+      ],
+      "noise_mask": true
+    },
+    "_meta": {
+      "title": "CONDITIONING правки 1 (выходы: positive, negative, latent)"
+    }
+  },
+  "32": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "31",
+        0
+      ],
+      "negative": [
+        "31",
+        1
+      ],
+      "latent_image": [
+        "31",
+        2
+      ],
+      "seed": 20260401,
+      "steps": 28,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "ПРОХОД правки 1: denoise 1.0 только внутри маски"
+    }
+  },
+  "33": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "32",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "Результат правки 1 (становится входом правки 2)"
+    }
+  },
+  "40": {
+    "class_type": "GrowMask",
+    "inputs": {
+      "mask": [
+        "21",
+        1
+      ],
+      "expand": 8,
+      "tapered_corners": true
+    },
+    "_meta": {
+      "title": "Расширение маски B на 8 px"
+    }
+  },
+  "41": {
+    "class_type": "InpaintModelConditioning",
+    "inputs": {
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ],
+      "pixels": [
+        "33",
+        0
+      ],
+      "mask": [
+        "40",
+        0
+      ],
+      "noise_mask": true
+    },
+    "_meta": {
+      "title": "CONDITIONING правки 2 (поверх результата правки 1)"
+    }
+  },
+  "42": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "41",
+        1
+      ],
+      "latent_image": [
+        "41",
+        2
+      ],
+      "seed": 20260402,
+      "steps": 28,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "ПРОХОД правки 2"
+    }
+  },
+  "43": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "42",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "Финал: обе правки применены"
+    }
+  },
+  "50": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "33",
+        0
+      ],
+      "filename_prefix": "labels/LB-2026-014/edit_pass1"
+    },
+    "_meta": {
+      "title": "OUTPUT: промежуточный результат правки 1"
+    }
+  },
+  "51": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "43",
+        0
+      ],
+      "filename_prefix": "labels/LB-2026-014/edit_batch_final"
+    },
+    "_meta": {
+      "title": "OUTPUT: финал после пакета правок"
+    }
+  },
+  "52": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "43",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью для согласования правок"
+    }
+  },
+  "60": {
+    "class_type": "MaskPreview",
+    "inputs": {
+      "mask": [
+        "30",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Контроль маски A"
+    }
+  },
+  "61": {
+    "class_type": "MaskPreview",
+    "inputs": {
+      "mask": [
+        "40",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Контроль маски B"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "brief_id": "LB-2026-014",
+  "project": "Этикетка для крафтового напитка: генерация графики по брифу с выходом в печать",
+  "brand": {
+    "name": "Северный мох",
+    "product": "Квас на мхе",
+    "volume_ml": 500,
+    "market": "RU",
+    "segment": "крафт, средний плюс"
+  },
+  "target": {
+    "label": {
+      "width_mm": 70,
+      "height_mm": 120
+    },
+    "bleed_mm": 3,
+    "safe_zone_mm": 4,
+    "dpi": 300,
+    "corner_radius_mm": 2,
+    "die_line": {
+      "shape": "rounded_rect",
+      "layer": "spot 100% magenta, отдельный слой, overprint, не печатается",
+      "min_cut_radius_mm": 1.5,
+      "note": "резать по векторному контуру; растровая альфа из генерации контуром вырубки не является"
+    },
+    "print_pixels": {
+      "width_px": 898,
+      "height_px": 1488,
+      "formula": "px = (мм + 2 * вылет) / 25.4 * 300, с округлением вверх",
+      "check": "76 мм → 897.6 px → 898; 126 мм → 1488.2 px → 1488"
+    }
+  },
+  "color": {
+    "profile_icc": "ISO Coated v2 (ECI).icc",
+    "rendering_intent": "relative_colorimetric",
+    "black_point_compensation": true,
+    "max_total_ink_coverage_pct": 300,
+    "black_generation": "standard",
+    "rich_black_for_large_areas": "40C 30M 30Y 100K",
+    "black_text": "100K, без составного чёрного",
+    "spot_colors": [
+      {
+        "name": "Forest Green",
+        "target_lab": [38.5, -18.7, 14.2],
+        "note": "если не попадает в CMYK-гаму — заказывается как spot"
+      },
+      {
+        "name": "Warm Ochre",
+        "target_lab": [72.1, 6.4, 48.9]
+      }
+    ],
+    "rgb_source_warning": "графика генерится в RGB; в CMYK переводится на шаге сборки, а не в ComfyUI"
+  },
+  "typography": {
+    "text_as_live_type": true,
+    "text_generated_by_ai": false,
+    "fonts": [
+      {
+        "role": "brand",
+        "family": "Bitter Bold",
+        "license": "OFL"
+      },
+      {
+        "role": "legal",
+        "family": "PT Sans Regular",
+        "license": "OFL"
+      }
+    ],
+    "min_font_size_pt": 6,
+    "min_contrast": "текст не ставится на пёстрый фон без плашки",
+    "language": "ru"
+  },
+  "graphics": {
+    "style": "плоская векторная графика, гравировальная линия, без объёма",
+    "palette_hex": ["#1F3B2C", "#C98A2E", "#F2EAD9"],
+    "composition": "симметричная, орнаментальная рамка внутри безопасной зоны",
+    "references": [
+      "input/refs/moodboard_pine_label.png"
+    ],
+    "negative_list": [
+      "text",
+      "letters",
+      "typography",
+      "logo",
+      "watermark",
+      "drop shadow",
+      "cast shadow",
+      "inner shadow",
+      "ambient occlusion",
+      "perspective",
+      "3d render",
+      "mockup",
+      "folded paper",
+      "glossy highlight",
+      "gradient mesh",
+      "blur",
+      "jpeg artifacts"
+    ]
+  },
+  "generation": {
+    "workflow": "workflows/01_brief_to_label_artwork.json",
+    "base_model": "sd_xl_base_1.0.safetensors",
+    "seed": 734021,
+    "steps": 30,
+    "cfg": 6.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "hi_res_fix": {
+      "scale_by": 1.5,
+      "denoise": 0.42
+    },
+    "variants_for_approval": 4
+  },
+  "constraints": {
+    "hard": [
+      "нет растрового текста в печатном файле",
+      "нет запечённых теней и перспективы в печатном слое",
+      "TAC не выше 300%",
+      "вылет 3 мм по всем сторонам, безопасная зона 4 мм внутри контура",
+      "вырубка отдельным spot-слоем",
+      "все шрифты в кривых на финальном PDF/X"
+    ],
+    "soft": [
+      "минимальная толщина линии 0.25 мм",
+      "минимальное белое пространство между элементами 1 мм"
+    ],
+    "mockup_policy": "перспектива, тени и свет живут только в мокапе; мокап в печать не уходит"
+  },
+  "deliverables": [
+    "artwork_RGB_300dpi_898x1488.png — графика без текста и теней",
+    "dieline_mask.png — контур вырубки отдельным файлом",
+    "final_CMYK_PDF-X4.pdf — CMYK по ICC типографии + spot-слой вырубки",
+    "mockup_preview.jpg — согласование, в печать не идёт"
+  ],
+  "acceptance": [
+    "открыть PDF в Acrobat: Output Preview показывает TAC ≤ 300% и наличие spot-слоя",
+    "текст выделяется как текст до финального спуска в кривые",
+    "контур вырубки совпадает с маской dieline_mask.png при наложении"
+  ],
+  "open_questions": [
+    "типография подтверждает ICC-профиль и максимальный TAC",
+    "нужен ли spot вместо Forest Green (проверка после первой цветопробы)"
+  ]
+}

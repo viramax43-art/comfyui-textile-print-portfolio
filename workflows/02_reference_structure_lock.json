@@ -1,0 +1,222 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "_meta": {
+      "title": "CHECKPOINT: SDXL base"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "flat vector label artwork for a craft beverage bottle, botanical pine and juniper ornament, deep forest green with warm ochre accent, hand drawn engraving line art, symmetric centred composition inside an ornamental frame, screen print look, 3 spot colours, solid clean background, crisp high contrast edges, print ready artwork"
+    },
+    "_meta": {
+      "title": "POSITIVE: тот же бриф, но стиль подтягивается к референсу"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, folded paper, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
+    },
+    "_meta": {
+      "title": "NEGATIVE: запрет текста, теней и перспективы"
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "refs/moodboard_pine_label.png"
+    },
+    "_meta": {
+      "title": "REFERENCE: референс заказчика (input/refs/...)"
+    }
+  },
+  "5": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1024,
+      "height": 1664,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Приведение референса к холсту генерации"
+    }
+  },
+  "6": {
+    "class_type": "Canny",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "low_threshold": 0.35,
+      "high_threshold": 0.75
+    },
+    "_meta": {
+      "title": "Контур референса (структура читается, цвет/фактура нет)"
+    }
+  },
+  "7": {
+    "class_type": "ControlNetLoader",
+    "inputs": {
+      "control_net_name": "controlnet-canny-sdxl.safetensors"
+    },
+    "_meta": {
+      "title": "CONTROLNET: canny SDXL (подставить установленный файл)"
+    }
+  },
+  "8": {
+    "class_type": "ControlNetApplyAdvanced",
+    "inputs": {
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "control_net": [
+        "7",
+        0
+      ],
+      "image": [
+        "6",
+        0
+      ],
+      "strength": 0.8,
+      "start_percent": 0.0,
+      "end_percent": 0.75
+    },
+    "_meta": {
+      "title": "Замок композиции: strength 0.8, с 0% до 75% шагов"
+    }
+  },
+  "9": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1664,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "Холст 1024x1664 (70x120 мм + вылет)"
+    }
+  },
+  "10": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "8",
+        1
+      ],
+      "latent_image": [
+        "9",
+        0
+      ],
+      "seed": 218774,
+      "steps": 32,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "Генерация: контроль берётся из ветки ControlNet (выходы 0 и 1)"
+    }
+  },
+  "11": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "10",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "DECODE"
+    }
+  },
+  "12": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "11",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 898,
+      "height": 1488,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "898x1488 px = 76x126 мм @300 dpi"
+    }
+  },
+  "13": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ],
+      "filename_prefix": "labels/LB-2026-014/ref_lock_v1"
+    },
+    "_meta": {
+      "title": "OUTPUT: арт под раскладку"
+    }
+  },
+  "14": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Показать заказчику, что именно взято из референса"
+    }
+  },
+  "15": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "12",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью результата"
+    }
+  }
+}

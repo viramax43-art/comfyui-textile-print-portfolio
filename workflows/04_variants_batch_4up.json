@@ -1,0 +1,135 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "_meta": {
+      "title": "CHECKPOINT: SDXL base"
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "flat vector label artwork for a craft beverage bottle, botanical moss and juniper ornament, forest green with warm ochre accent, hand drawn line art, symmetric centred composition, ornamental frame, screen print look, 3 spot colours, solid clean background, crisp high contrast edges, print ready artwork"
+    },
+    "_meta": {
+      "title": "POSITIVE: бриф кейса 01"
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "1",
+        1
+      ],
+      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, folded paper, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
+    },
+    "_meta": {
+      "title": "NEGATIVE"
+    }
+  },
+  "4": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1664,
+      "batch_size": 4
+    },
+    "_meta": {
+      "title": "БАТЧ 4 варианта за один запуск (при 8-12 GB VRAM поставить 2)"
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "2",
+        0
+      ],
+      "negative": [
+        "3",
+        0
+      ],
+      "latent_image": [
+        "4",
+        0
+      ],
+      "seed": 880451,
+      "steps": 28,
+      "cfg": 6.0,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "Генерация: один сид, 4 разных шума = 4 варианта"
+    }
+  },
+  "6": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "_meta": {
+      "title": "DECODE всей пачки"
+    }
+  },
+  "7": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "6",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 898,
+      "height": 1488,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Приведение пачки к 898x1488 px @300 dpi"
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "labels/LB-2026-014/variants_4up"
+    },
+    "_meta": {
+      "title": "OUTPUT: 4 файла вариантов для выбора заказчиком"
+    }
+  },
+  "9": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью пачки"
+    }
+  }
+}
