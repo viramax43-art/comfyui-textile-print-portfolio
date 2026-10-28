@@ -14,7 +14,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 
 def build_broken_inputs(tmp: Path) -> None:
-    prompt = json.loads((ROOT / "workflows" / "01_brief_to_label_artwork.json").read_text(encoding="utf-8"))
+    prompt = json.loads((ROOT / "workflows" / "01_brief_to_print_artwork.json").read_text(encoding="utf-8"))
     prompt["5"]["inputs"]["cfg"] = "6.5"
     prompt["5"]["inputs"]["steps"] = 20.5
     prompt["4"]["inputs"]["width"] = 1024.5

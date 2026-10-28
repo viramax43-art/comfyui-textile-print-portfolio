@@ -1,0 +1,161 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "photos/TS-2026-052/source_A.png"
+    },
+    "_meta": {
+      "title": "ИСХОДНИК A: фото/скан материала заказчика"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "photos/TS-2026-052/source_B.png"
+    },
+    "_meta": {
+      "title": "ИСХОДНИК B: второй файл партии"
+    }
+  },
+  "3": {
+    "class_type": "UpscaleModelLoader",
+    "inputs": {
+      "model_name": "4x-UltraSharp.pth"
+    },
+    "_meta": {
+      "title": "АПСКЕЙЛ-МОДЕЛЬ: 4x (подставить свой файл из models/upscale_models)"
+    }
+  },
+  "4": {
+    "class_type": "ImageUpscaleWithModel",
+    "inputs": {
+      "upscale_model": [
+        "3",
+        0
+      ],
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Апскейл A: x4 без перерисовки — детали остаются исходными"
+    }
+  },
+  "5": {
+    "class_type": "ImageUpscaleWithModel",
+    "inputs": {
+      "upscale_model": [
+        "3",
+        0
+      ],
+      "image": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Апскейл B: та же модель, второй файл"
+    }
+  },
+  "6": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 3543,
+      "height": 4724,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Точный печатный размер A: 3543x4724 px = 30x40 см @300 dpi"
+    }
+  },
+  "7": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "5",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 3543,
+      "height": 4724,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Точный печатный размер B"
+    }
+  },
+  "8": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "6",
+        0
+      ],
+      "image2": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Сборка партии: два файла в один батч печатного размера"
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ],
+      "filename_prefix": "prints/TS-2026-052/print_ready"
+    },
+    "_meta": {
+      "title": "OUTPUT 1: партия в печатном размере (RGB, 300 dpi)"
+    }
+  },
+  "10": {
+    "class_type": "ImageQuantize",
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "colors": 8,
+      "dither": "none"
+    },
+    "_meta": {
+      "title": "Сепарация в 8 красок без дизеринга: ограничение палитры для шелкографии/DTF"
+    }
+  },
+  "11": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ],
+      "filename_prefix": "prints/TS-2026-052/print_ready_8spot"
+    },
+    "_meta": {
+      "title": "OUTPUT 2: та же партия, приведённая к 8 цветам"
+    }
+  },
+  "12": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью партии до квантования — видно, что апскейл не «дофантазировал»"
+    }
+  }
+}

@@ -15,7 +15,7 @@
         "1",
         1
       ],
-      "text": "flat vector label artwork for a craft beverage bottle, botanical moss and juniper ornament, forest green with warm ochre accent, hand drawn line art, symmetric centred composition, ornamental frame, screen print look, 3 spot colours, solid clean background, crisp high contrast edges, print ready artwork"
+      "text": "flat vector textile print artwork, botanical wildflower and fern ornament, muted sage green with terracotta and cream, hand drawn line art, symmetric centred composition, screen print look, limited to 8 flat spot colours, even ink coverage, solid clean white background, crisp high contrast edges, surface pattern design, print ready"
     },
     "_meta": {
       "title": "POSITIVE: бриф кейса 01"
@@ -28,7 +28,7 @@
         "1",
         1
       ],
-      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, folded paper, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
+      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, t-shirt, fabric folds, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
     },
     "_meta": {
       "title": "NEGATIVE"
@@ -38,11 +38,11 @@
     "class_type": "EmptyLatentImage",
     "inputs": {
       "width": 1024,
-      "height": 1664,
+      "height": 1368,
       "batch_size": 4
     },
     "_meta": {
-      "title": "БАТЧ 4 варианта за один запуск (при 8-12 GB VRAM поставить 2)"
+      "title": "БАТЧ: 4 колористических варианта за один запуск (на 8 GB VRAM поставить 2)"
     }
   },
   "5": {
@@ -99,12 +99,12 @@
         0
       ],
       "upscale_method": "lanczos",
-      "width": 898,
-      "height": 1488,
+      "width": 3543,
+      "height": 4724,
       "crop": "center"
     },
     "_meta": {
-      "title": "Приведение пачки к 898x1488 px @300 dpi"
+      "title": "Приведение пачки к 3543x4724 px @300 dpi"
     }
   },
   "8": {
@@ -114,10 +114,10 @@
         "7",
         0
       ],
-      "filename_prefix": "labels/LB-2026-014/variants_4up"
+      "filename_prefix": "prints/TS-2026-041/colourway_variants"
     },
     "_meta": {
-      "title": "OUTPUT: 4 файла вариантов для выбора заказчиком"
+      "title": "OUTPUT: 4 файла колористики для выбора заказчиком"
     }
   },
   "9": {

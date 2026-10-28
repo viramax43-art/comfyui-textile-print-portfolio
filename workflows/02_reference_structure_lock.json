@@ -15,10 +15,10 @@
         "1",
         1
       ],
-      "text": "flat vector label artwork for a craft beverage bottle, botanical pine and juniper ornament, deep forest green with warm ochre accent, hand drawn engraving line art, symmetric centred composition inside an ornamental frame, screen print look, 3 spot colours, solid clean background, crisp high contrast edges, print ready artwork"
+      "text": "flat vector textile print artwork, botanical fern and wildflower ornament arranged in the same rhythm as the reference, muted sage green with terracotta and cream, hand drawn line art, screen print look, limited to 8 flat spot colours, even ink coverage, solid clean white background, crisp high contrast edges, surface pattern design, print ready"
     },
     "_meta": {
-      "title": "POSITIVE: тот же бриф, но стиль подтягивается к референсу"
+      "title": "POSITIVE: тот же бриф, стиль задаётся промптом"
     }
   },
   "3": {
@@ -28,19 +28,19 @@
         "1",
         1
       ],
-      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, folded paper, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
+      "text": "text, letters, words, typography, numbers, logo, watermark, signature, drop shadow, cast shadow, soft shadow, ambient occlusion, perspective, 3d render, mockup, t-shirt, fabric folds, glossy highlight, gradient mesh, blurry, jpeg artifacts, photo, grain"
     },
     "_meta": {
-      "title": "NEGATIVE: запрет текста, теней и перспективы"
+      "title": "NEGATIVE: запрет текста, теней, мокапа и перспективы"
     }
   },
   "4": {
     "class_type": "LoadImage",
     "inputs": {
-      "image": "refs/moodboard_pine_label.png"
+      "image": "refs/sketch_wildflower_layout.png"
     },
     "_meta": {
-      "title": "REFERENCE: референс заказчика (input/refs/...)"
+      "title": "REFERENCE: эскиз клиента (input/refs/...)"
     }
   },
   "5": {
@@ -52,7 +52,7 @@
       ],
       "upscale_method": "lanczos",
       "width": 1024,
-      "height": 1664,
+      "height": 1368,
       "crop": "center"
     },
     "_meta": {
@@ -70,7 +70,7 @@
       "high_threshold": 0.75
     },
     "_meta": {
-      "title": "Контур референса (структура читается, цвет/фактура нет)"
+      "title": "Контур референса: структура и ритм читаются, цвет и фактура нет"
     }
   },
   "7": {
@@ -113,11 +113,11 @@
     "class_type": "EmptyLatentImage",
     "inputs": {
       "width": 1024,
-      "height": 1664,
+      "height": 1368,
       "batch_size": 1
     },
     "_meta": {
-      "title": "Холст 1024x1664 (70x120 мм + вылет)"
+      "title": "Холст 1024x1368 (пропорции 30x40 см)"
     }
   },
   "10": {
@@ -174,12 +174,12 @@
         0
       ],
       "upscale_method": "lanczos",
-      "width": 898,
-      "height": 1488,
+      "width": 3543,
+      "height": 4724,
       "crop": "center"
     },
     "_meta": {
-      "title": "898x1488 px = 76x126 мм @300 dpi"
+      "title": "3543x4724 px = 30x40 см @300 dpi"
     }
   },
   "13": {
@@ -189,10 +189,10 @@
         "12",
         0
       ],
-      "filename_prefix": "labels/LB-2026-014/ref_lock_v1"
+      "filename_prefix": "prints/TS-2026-041/ref_lock_v1"
     },
     "_meta": {
-      "title": "OUTPUT: арт под раскладку"
+      "title": "OUTPUT: принт в печатном размере"
     }
   },
   "14": {
@@ -204,7 +204,7 @@
       ]
     },
     "_meta": {
-      "title": "Показать заказчику, что именно взято из референса"
+      "title": "Показать клиенту, что именно взято из референса"
     }
   },
   "15": {

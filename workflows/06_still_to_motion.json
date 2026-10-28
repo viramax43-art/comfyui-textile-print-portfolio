@@ -1,0 +1,198 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "prints/TS-2026-041/print_art_v1.png"
+    },
+    "_meta": {
+      "title": "ВХОД: готовый принт (выход кейса 01), 3543x4724 px"
+    }
+  },
+  "2": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 832,
+      "height": 480,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Кадр под видео-бакет 832x480 (кратно 16): берём центральную композицию принта"
+    }
+  },
+  "3": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "wan2.1_i2v_480p_14B_fp8_e4m3fn.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "МОДЕЛЬ: Wan 2.1 image-to-video (подставить свой файл из models/diffusion_models)"
+    }
+  },
+  "4": {
+    "class_type": "ModelSamplingSD3",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "shift": 8.0
+    },
+    "_meta": {
+      "title": "Shift 8.0 — рабочий режим сэмплинга для Wan"
+    }
+  },
+  "5": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan"
+    },
+    "_meta": {
+      "title": "Текстовый энкодер umt5 (тип wan)"
+    }
+  },
+  "6": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "wan2.1_vae.safetensors"
+    },
+    "_meta": {
+      "title": "VAE для видео-латента"
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "text": "the printed botanical artwork comes alive: a light wind moves the fern fronds, small ink blossoms slowly unfurl, gentle parallax drift between layers, flat screen print style preserved, steady locked camera, calm loopable motion, no camera movement"
+    },
+    "_meta": {
+      "title": "POSITIVE: описано движение, а не новый сюжет"
+    }
+  },
+  "8": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "5",
+        0
+      ],
+      "text": "text, letters, logo, watermark, warping, melting shapes, flicker, colour shift, changing art style, camera shake, zoom, morphing into another object, people, hands, extra objects, blurry"
+    },
+    "_meta": {
+      "title": "NEGATIVE: запрет деформаций, камеры и нового сюжета"
+    }
+  },
+  "9": {
+    "class_type": "WanImageToVideo",
+    "inputs": {
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "8",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ],
+      "width": 832,
+      "height": 480,
+      "length": 65,
+      "batch_size": 1,
+      "start_image": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Кадр-стартер + 65 кадров (4n+1) = ~4 секунды при 16 fps"
+    }
+  },
+  "10": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "9",
+        0
+      ],
+      "negative": [
+        "9",
+        1
+      ],
+      "latent_image": [
+        "9",
+        2
+      ],
+      "seed": 512041,
+      "steps": 20,
+      "cfg": 6.0,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "Генерация видео-латента: 20 шагов, uni_pc + simple"
+    }
+  },
+  "11": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "10",
+        0
+      ],
+      "vae": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Декод: на выходе батч из 65 кадров"
+    }
+  },
+  "12": {
+    "class_type": "SaveAnimatedWEBP",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "motion/MCH-2026-007/print_motion",
+      "fps": 16.0,
+      "lossless": false,
+      "quality": 90,
+      "method": "default"
+    },
+    "_meta": {
+      "title": "OUTPUT: анимированный WEBP для карточки товара и соцсетей"
+    }
+  },
+  "13": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Покадровое превью для приёмки"
+    }
+  }
+}

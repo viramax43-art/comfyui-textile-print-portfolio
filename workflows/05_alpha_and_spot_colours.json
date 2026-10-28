@@ -1,0 +1,171 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "prints/TS-2026-041/print_art_v1.png"
+    },
+    "_meta": {
+      "title": "ВХОД: принт на белом фоне (выход кейса 01)"
+    }
+  },
+  "2": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 3543,
+      "height": 4724,
+      "crop": "center"
+    },
+    "_meta": {
+      "title": "Точный печатный размер: 3543x4724 px = 30x40 см @300 dpi"
+    }
+  },
+  "3": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "color": 16777215
+    },
+    "_meta": {
+      "title": "Маска фона: 16777215 = #FFFFFF (фон в арте строго однотонный)"
+    }
+  },
+  "4": {
+    "class_type": "InvertMask",
+    "inputs": {
+      "mask": [
+        "3",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Инверсия = площадь самого принта"
+    }
+  },
+  "5": {
+    "class_type": "GrowMask",
+    "inputs": {
+      "mask": [
+        "4",
+        0
+      ],
+      "expand": 2,
+      "tapered_corners": false
+    },
+    "_meta": {
+      "title": "Компенсация антиалиасинга: +2 px, чтобы на плёнке не было серой каймы"
+    }
+  },
+  "6": {
+    "class_type": "InvertMask",
+    "inputs": {
+      "mask": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Возврат к маске фона уже с поправкой"
+    }
+  },
+  "7": {
+    "class_type": "JoinImageWithAlpha",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "alpha": [
+        "6",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Печатный слой с альфой по контуру (для DTF-плёнки)"
+    }
+  },
+  "8": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ],
+      "filename_prefix": "prints/TS-2026-041/print_art_alpha"
+    },
+    "_meta": {
+      "title": "OUTPUT 1: PNG-24 с прозрачным фоном"
+    }
+  },
+  "9": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "5",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Контур принта как отдельная картинка"
+    }
+  },
+  "10": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "9",
+        0
+      ],
+      "filename_prefix": "prints/TS-2026-041/contour_mask"
+    },
+    "_meta": {
+      "title": "OUTPUT 2: контур отдельным файлом — под трассировку и раскрой"
+    }
+  },
+  "11": {
+    "class_type": "ImageQuantize",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ],
+      "colors": 8,
+      "dither": "none"
+    },
+    "_meta": {
+      "title": "Сепарация в 8 плоских красок без дизеринга (7 красок + белый фон)"
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "11",
+        0
+      ],
+      "filename_prefix": "prints/TS-2026-041/print_art_8spot"
+    },
+    "_meta": {
+      "title": "OUTPUT 3: версия под шелкографию с ограничением палитры"
+    }
+  },
+  "13": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "7",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Превью альфы: проверка, что фон ушёл полностью"
+    }
+  }
+}
